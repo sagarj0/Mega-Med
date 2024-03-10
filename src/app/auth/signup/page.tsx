@@ -51,6 +51,7 @@ export default function SignUp() {
               name="fullName"
               type="text"
               autoComplete="family-name"
+              size="small"
               className="mb-4 bg-gray-50 border-gray-300 rounded"
             />
             <TextField
@@ -61,6 +62,7 @@ export default function SignUp() {
               name="email"
               type="email"
               autoComplete="email"
+              size="small"
               className="mb-4 bg-gray-50 border-gray-300 rounded"
             />
             <TextField
@@ -71,6 +73,7 @@ export default function SignUp() {
               name="phoneNumber"
               type="tel"
               autoComplete="tel"
+              size="small"
               className="mb-4 bg-gray-50 border-gray-300 rounded"
             />
             <TextField
@@ -81,6 +84,7 @@ export default function SignUp() {
               type="password"
               id="password"
               autoComplete="new-password"
+              size="small"
               className="mb-4 bg-gray-50 border-gray-300 rounded"
             />
           </FormGroup>
