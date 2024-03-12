@@ -5,20 +5,17 @@ import { Input, Button } from '@nextui-org/react';
 import MegaMedLogo from '@/ui/MegaMedLogo';
 import Link from 'next/link';
 import { useState } from 'react';
-import {
-  FaRegEye,
-  FaRegEyeSlash,
-  FaGoogle,
-} from 'react-icons/fa';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 
 export default function SignupPage() {
   const [isVisible, setIsVisible] = useState(false);
   // const toogleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <div className="flex items-center justify-center h-fit">
-      <div className="flex flex-col items-center justify-center m-4">
-        <div className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-4 m-4 w-96">
+    <main className="flex items-center justify-center h-fit">
+      <div className="flex flex-col items-center justify-center mb-6">
+        <section className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-4 m-4 w-96">
           <MegaMedLogo />
           <h1 className="text-center text-gray-400">
             Sign up to unlock your potential in medical
@@ -68,7 +65,7 @@ export default function SignupPage() {
             <Button
               type="submit"
               color="primary"
-              className="rounded-3xl"
+              radius="full"
             >
               Signup
             </Button>
@@ -78,12 +75,13 @@ export default function SignupPage() {
             <p className="text-gray-500 h-fit">OR</p>
             <div className="h-px w-full bg-gray-500 box-border mr-2"></div>
           </div>
-          <button className=" bg-gray-800 flex items-center gap-2 h-9 px-3 rounded-3xl text-sm">
-            Sign up with
-            <FaGoogle className="text-red-500" />
-          </button>
-        </div>
-        <div className="flex items-center justify-center">
+          <Button
+            startContent={<span>Sign up with</span>}
+            endContent={<FcGoogle className="text-lg" />}
+            radius="full"
+          ></Button>
+        </section>
+        <section className="flex items-center justify-center  ">
           Already have an account?
           <Link
             href="/auth/login"
@@ -91,8 +89,8 @@ export default function SignupPage() {
           >
             Login
           </Link>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
