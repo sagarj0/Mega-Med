@@ -1,10 +1,10 @@
 'use client';
 
 import react from 'react';
+import { useState } from 'react';
 import { Input, Button } from '@nextui-org/react';
 import MegaMedLogo from '@/ui/MegaMedLogo';
 import Link from 'next/link';
-import { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
