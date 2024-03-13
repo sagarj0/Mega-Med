@@ -7,7 +7,7 @@ export default function SideNav() {
   return (
     <nav
       className="
-      flex h-full flex-col px-3 py-4 md:px-2"
+      flex h-full flex-col "
     >
       <Link
         className="mb-2 flex h-20 items-center justify-center rounded-md bg-blue-700 p-4  md:h-40"
@@ -25,7 +25,6 @@ export default function SideNav() {
           <div className="hidden md:block">Sign Out</div>
         </button>
       </div>
-      <div className="flex flex-col gap-4"></div>
     </nav>
   );
 }

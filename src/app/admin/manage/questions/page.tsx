@@ -1,17 +1,14 @@
 import react from 'react';
-import SelectSubjectDropdown from '@/ui/questions/selectsubject';
 import AddQuestionForm from '@/ui/questions/addquesform';
+import Header from '@/ui/questions/header';
 
 export default function Page() {
   return (
-    <>
-      <h1 className="bold text-2xl mb-4">
-        Add Questions ...
-      </h1>
-      <div className="flex flex-col gap-8">
-        <SelectSubjectDropdown />
+    <main className=" h-full w-full flex flex-col items-center gap-16">
+      <Header />
+      
         <AddQuestionForm />
-      </div>
-    </>
+      
+    </main>
   );
 }
