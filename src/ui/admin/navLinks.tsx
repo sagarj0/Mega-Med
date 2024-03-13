@@ -2,22 +2,27 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaHome, FaPeopleArrows } from 'react-icons/fa';
+import { FaFileCircleQuestion } from 'react-icons/fa6';
 import { RiAdminLine } from 'react-icons/ri';
-
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
 const links = [
   { href: '/admin', label: 'Home', icon: FaHome },
   {
-    href: '/admin/manageadmins',
+    href: '/admin/manage/admins',
     label: 'Admins',
     icon: RiAdminLine,
   },
   {
-    href: '/admin/managementors',
+    href: '/admin/manage/mentors',
     label: 'Mentors',
     icon: FaPeopleArrows,
+  },
+  {
+    href: '/admin/manage/questions',
+    label: 'Add Questions',
+    icon: FaFileCircleQuestion,
   },
 ];
 
@@ -37,8 +42,10 @@ export default function NavLinks() {
             }
           )}
         >
-          <Icon className="w-6" />
-          <p className="hidden md:block">{label}</p>
+          <Icon className="w-6 text-gray-700" />
+          <p className="hidden text-gray-700 md:block">
+            {label}
+          </p>
         </Link>
       ))}
     </>

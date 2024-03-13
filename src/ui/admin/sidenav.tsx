@@ -5,7 +5,7 @@ import { FaPowerOff } from 'react-icons/fa';
 
 export default function SideNav() {
   return (
-    <div
+    <nav
       className="
       flex h-full flex-col px-3 py-4 md:px-2"
     >
@@ -26,6 +26,6 @@ export default function SideNav() {
         </button>
       </div>
       <div className="flex flex-col gap-4"></div>
-    </div>
+    </nav>
   );
 }

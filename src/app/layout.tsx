@@ -17,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${inter.className} min-h-full`}>
+      <body
+        className={`${inter.className} min-h-full 
+        bg-gradient-to-r from-purple-600/5 via-green-400/5 to-purple-600/5
+         `}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>
