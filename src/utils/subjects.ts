@@ -19,10 +19,21 @@ export const subjects: { label: string; value: string }[] = [
     label: 'Physics/Modern Physics',
     value: 'Physics/Modern Physics',
   },
-
   {
-    label: 'Chemistry',
-    value: 'Chemistry',
+    label: 'Chemistry/General and Physical Chemistry',
+    value: 'Chemistry/General and Physical Chemistry',
+  },
+  {
+    label: 'Chemistry/Inorganic Chemistry',
+    value: 'Chemistry/Inorganic Chemistry',
+  },
+  {
+    label: 'Chemistry/Organic Chemistry',
+    value: 'Chemistry/Organic Chemistry',
+  },
+  {
+    label: 'Chemistry/Applied Chemistry',
+    value: 'Chemistry/Applied Chemistry',
   },
   {
     label: 'Botany',
@@ -179,5 +190,14 @@ export const biologyData: SubjectData = {
     'Human biology',
     'Human population and health disorders',
     'Applied biology',
+  ],
+};
+
+export const MATData: SubjectData = {
+  MAT: [
+    'Verbal reasoning',
+    'Numerical reasoning',
+    'Logical reasoning',
+    'Abstract/Spatial reasoning',
   ],
 };
