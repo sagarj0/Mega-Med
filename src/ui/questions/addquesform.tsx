@@ -2,18 +2,14 @@
 import react from 'react';
 import { subjects } from '@/utils/subjects';
 
-import {
-  Input,
-  Textarea,
-  Select,
-  SelectItem,
-} from '@nextui-org/react';
+import { Input, Textarea, Select, SelectItem, Button } from '@nextui-org/react';
+import { IoSendSharp } from 'react-icons/io5';
 
 export default function AddQuestionForm() {
   return (
-    <div className="flex flex-col h-full w-full bg-gray-50/50  rounded-md px-6 py-8 lg:flex-row">
-      <div className=" w-3/5">
-        <form className="flex flex-col gap-2">
+    <form className="flex flex-col h-full w-full bg-gray-50/50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8">
+      <div className=" lg:col-span-3 lg:row-span-2 ">
+        <div className="h-full flex flex-col gap-2">
           <Input
             type="text"
             label="Q."
@@ -21,7 +17,7 @@ export default function AddQuestionForm() {
             placeholder="Write Question ..."
             size="md"
             classNames={{
-              mainWrapper: 'w-4/5',
+              mainWrapper: 'w-full',
               label: 'text-gray-400',
             }}
             className="mb-3"
@@ -72,26 +68,29 @@ export default function AddQuestionForm() {
             labelPlacement="outside"
             placeholder="Write explainaton ..."
             size="md"
-            className="max-w-xs mt-6 ml-5"
+            className="max-w-xs mt-6 ml-5 mt-16"
           />
-        </form>
+        </div>
       </div>
-      <div className="w-1/4">
-        <Select
-          label="Subjects"
-          className="max-w-xs"
-          size="sm"
-        >
+      <div className="lg:col-span-2 lg:row-span-1">
+        <Select label="Subjects" className="max-w-xs" size="sm">
           {subjects.map((subject) => (
-            <SelectItem
-              key={subject.value}
-              value={subject.value}
-            >
+            <SelectItem key={subject.value} value={subject.value}>
               {subject.label}
             </SelectItem>
           ))}
         </Select>
       </div>
-    </div>
+      <div className="lg:col-span-1 lg:row-span-1 lg:self-end pb-1">
+        <Button
+          size="lg"
+          radius="lg"
+          color="primary"
+          endContent={<IoSendSharp className="text-xl" />}
+        >
+          Send
+        </Button>
+      </div>
+    </form>
   );
 }
