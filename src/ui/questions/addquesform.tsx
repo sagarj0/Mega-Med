@@ -1,9 +1,10 @@
 'use client';
 import react from 'react';
-import { subjects } from '@/utils/subjects';
+import { subjects } from '@/datas/subjects';
 
 import { Input, Textarea, Select, SelectItem, Button } from '@nextui-org/react';
 import { IoSendSharp } from 'react-icons/io5';
+import { DropdownMenuDemo } from './dropdown';
 
 export default function AddQuestionForm() {
   return (
@@ -73,13 +74,13 @@ export default function AddQuestionForm() {
         </div>
       </div>
       <div className="lg:col-span-2 lg:row-span-1">
-        <Select label="Subjects" className="max-w-xs" size="sm">
+        {/* <Select label="Subjects" className="max-w-xs" size="sm">
           {subjects.map((subject) => (
             <SelectItem key={subject.value} value={subject.value}>
               {subject.label}
             </SelectItem>
           ))}
-        </Select>
+        </Select> */}
       </div>
       <div className="lg:col-span-1 lg:row-span-1 lg:self-end pb-1">
         <Button
