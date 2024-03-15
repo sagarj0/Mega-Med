@@ -1,10 +1,8 @@
-// /** @type {import('tailwindcss').Config} */
 import { nextui } from '@nextui-org/react';
-
 import type { Config } from 'tailwindcss';
 
 const config = {
-  darkMode: 'class',
+  darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -23,7 +21,8 @@ const config = {
       },
     },
     extend: {
-      colors: {
+      /*
+ colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -63,6 +62,8 @@ const config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      */
+
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
