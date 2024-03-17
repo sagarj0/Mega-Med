@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Input } from '@nextui-org/react';
 import {
   DropdownMenu,
@@ -17,7 +18,9 @@ import { subjects } from '@/datas/subjects';
 import { subjectData } from '@/datas/subjects';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 
-export function DropdownMenuDemo() {
+export function MultiDropdownMenu() {
+  const [value, setValue] = useState('');
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -27,10 +30,15 @@ export function DropdownMenuDemo() {
           size="md"
           classNames={{
             base: 'hover:cursor-pointer',
-            mainWrapper: 'w-full lg:w-11/12',
+            mainWrapper: 'w-full',
             label: 'text-gray-400',
           }}
+          isRequired={true}
           isReadOnly={true}
+          value={value}
+          onValueChange={setValue}
+          // isInvalid={`${value}` === ''}
+          // errorMessage="Please select a subject and unit"
           endContent={<BsChevronDoubleDown />}
           className="mb-3"
         />
@@ -53,6 +61,9 @@ export function DropdownMenuDemo() {
                       <DropdownMenuItem
                         className="hover:bg-blue-500"
                         key={`${subject}/${unit}`}
+                        onSelect={(e) => {
+                          setValue(`${subject}/${unit}`);
+                        }} // This is the line that needs to be fixed
                       >
                         <span>{unit}</span>
                       </DropdownMenuItem>
