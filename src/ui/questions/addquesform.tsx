@@ -10,7 +10,7 @@ const AddQuestionForm: React.FC<{
   setBreadCrumbVal: Dispatch<SetStateAction<string>>;
 }> = ({ setBreadCrumbVal }) => {
   return (
-    <form className="flex flex-col max-h-fit w-full bg-black-50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8">
+    <form className="flex flex-col max-h-fit w-full bg-gray-50/50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8">
       <div className=" lg:col-span-3 lg:row-span-2 ">
         <div className="h-full flex flex-col gap-2">
           <Input
