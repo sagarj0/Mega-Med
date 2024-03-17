@@ -1,12 +1,21 @@
-import react from 'react';
+'use client';
+
+import React, { SetStateAction, useState } from 'react';
 import AddQuestionForm from '@/ui/questions/addquesform';
 import Header from '@/ui/questions/header';
+import BreadCrumb from '@/ui/questions/breadcrumb';
 
-export default function Page() {
+const Page = () => {
+  const [breadCrumbVal, setBreadCrumbVal] = useState('');
+
   return (
-    <main className=" h-full w-full flex flex-col items-center gap-12">
+    <main className=" h-full w-full flex flex-col items-center gap-4">
       <Header />
-      <AddQuestionForm />
+      {/* //BreadCrub here */}
+      <BreadCrumb breadCrumbVal={breadCrumbVal} />
+      <AddQuestionForm setBreadCrumbVal={setBreadCrumbVal} />
     </main>
   );
-}
+};
+
+export default Page;

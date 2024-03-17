@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Dispatch, SetStateAction } from 'react';
 import { Input } from '@nextui-org/react';
 import {
   DropdownMenu,
@@ -18,8 +18,13 @@ import { subjects } from '@/datas/subjects';
 import { subjectData } from '@/datas/subjects';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 
-export function MultiDropdownMenu() {
+export function MultiDropdownMenu({
+  setBreadCrumbVal,
+}: {
+  setBreadCrumbVal: Dispatch<SetStateAction<string>>;
+}) {
   const [value, setValue] = useState('');
+  setBreadCrumbVal(value);
 
   return (
     <DropdownMenu>
@@ -29,17 +34,16 @@ export function MultiDropdownMenu() {
           placeholder="Subjects / Units"
           size="md"
           classNames={{
-            base: 'hover:cursor-pointer',
             mainWrapper: 'w-full',
             label: 'text-gray-400',
+            input: 'hover:cursor-pointer',
           }}
           isRequired={true}
           isReadOnly={true}
           value={value}
           onValueChange={setValue}
           // isInvalid={`${value}` === ''}
-          // errorMessage="Please select a subject and unit"
-          endContent={<BsChevronDoubleDown />}
+          // errorMessage="Plea}          endContent={<BsChevronDoubleDown />}
           className="mb-3"
         />
       </DropdownMenuTrigger>
@@ -62,6 +66,7 @@ export function MultiDropdownMenu() {
                         className="hover:bg-blue-500"
                         key={`${subject}/${unit}`}
                         onSelect={(e) => {
+                          console.log(e);
                           setValue(`${subject}/${unit}`);
                         }} // This is the line that needs to be fixed
                       >

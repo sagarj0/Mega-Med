@@ -1,14 +1,16 @@
 'use client';
-import react from 'react';
+import react, { Dispatch, SetStateAction } from 'react';
 import { subjects } from '@/datas/subjects';
 
 import { Input, Textarea, Button, RadioGroup, Radio } from '@nextui-org/react';
 import { IoSendSharp } from 'react-icons/io5';
 import { MultiDropdownMenu } from './dropdown';
 
-export default function AddQuestionForm() {
+const AddQuestionForm: React.FC<{
+  setBreadCrumbVal: Dispatch<SetStateAction<string>>;
+}> = ({ setBreadCrumbVal }) => {
   return (
-    <form className="flex flex-col h-full w-full bg-gray-50/50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8">
+    <form className="flex flex-col max-h-fit w-full bg-black-50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8">
       <div className=" lg:col-span-3 lg:row-span-2 ">
         <div className="h-full flex flex-col gap-2">
           <Input
@@ -91,12 +93,12 @@ export default function AddQuestionForm() {
             // disableAutosize
             maxRows={4}
             size="md"
-            className="max-w-xs ml-5 mt-14"
+            className="max-w-xs ml-5 mt-8"
           />
         </div>
       </div>
       <div className="lg:col-span-2 lg:row-span-1">
-        <MultiDropdownMenu />
+        <MultiDropdownMenu setBreadCrumbVal={setBreadCrumbVal} />
       </div>
       <div className="lg:col-span-1 lg:row-span-1 lg:self-end xl:mb-2 xl:-ml-40">
         <Button
@@ -111,4 +113,6 @@ export default function AddQuestionForm() {
       </div>
     </form>
   );
-}
+};
+
+export default AddQuestionForm;
