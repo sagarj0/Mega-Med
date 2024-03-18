@@ -1,21 +1,16 @@
-'use client';
+import { Button } from '@nextui-org/react';
+import Link from 'next/link';
+import React from 'react';
 
-import React, { SetStateAction, useState } from 'react';
-import AddQuestionForm from '@/ui/questions/addquesform';
-import Header from '@/ui/questions/header';
-import BreadCrumb from '@/ui/questions/breadcrumb';
-
-const Page = () => {
-  const [breadCrumbVal, setBreadCrumbVal] = useState('');
-
+export default function Page() {
   return (
-    <main className=" h-full w-full flex flex-col items-center gap-4">
-      <Header />
-      {/* //BreadCrub here */}
-      <BreadCrumb breadCrumbVal={breadCrumbVal} />
-      <AddQuestionForm setBreadCrumbVal={setBreadCrumbVal} />
-    </main>
-  );
-};
+    <div>
+      <h1>Create</h1>
+      <Link href="/admin/manage/questions/addQuestion">
+        <Button> Add </Button>
+      </Link>
 
-export default Page;
+      <h1>fetching, updating and deleting, under build</h1>
+    </div>
+  );
+}
