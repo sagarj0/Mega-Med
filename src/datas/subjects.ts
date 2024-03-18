@@ -1,60 +1,24 @@
-export const subjects: { label: string; value: string }[] = [
-  {
-    label: 'Physics/Mechanics',
-    value: 'Physics/Mechanics',
-  },
-  {
-    label: 'Physics/Heat and Thermodynamics',
-    value: 'Physics/Heat and Thermodynamics',
-  },
-  {
-    label: 'Physics/Waves and Optics',
-    value: 'Physics/Waves and Optics',
-  },
-  {
-    label: 'Physics/Electricity and Magnetism',
-    value: 'Physics/Electricity and Magnetism',
-  },
-  {
-    label: 'Physics/Modern Physics',
-    value: 'Physics/Modern Physics',
-  },
-  {
-    label: 'Chemistry/General and Physical Chemistry',
-    value: 'Chemistry/General and Physical Chemistry',
-  },
-  {
-    label: 'Chemistry/Inorganic Chemistry',
-    value: 'Chemistry/Inorganic Chemistry',
-  },
-  {
-    label: 'Chemistry/Organic Chemistry',
-    value: 'Chemistry/Organic Chemistry',
-  },
-  {
-    label: 'Chemistry/Applied Chemistry',
-    value: 'Chemistry/Applied Chemistry',
-  },
-  {
-    label: 'Botany',
-    value: 'Botany',
-  },
-  {
-    label: 'Zoology',
-    value: 'Zoology',
-  },
-  {
-    label: 'MAT',
-    value: 'MAT',
-  },
+export const subjects = [
+  'Physics/Mechanics',
+  'Physics/Heat and Thermodynamics',
+  'Physics/Waves and Optics',
+  'Physics/Electricity and Magnetism',
+  'Physics/Modern Physics',
+  'Chemistry/General and Physical Chemistry',
+  'Chemistry/Inorganic Chemistry',
+  'Chemistry/Organic Chemistry',
+  'Chemistry/Applied Chemistry',
+  'Botany',
+  'Zoology',
+  'MAT',
 ];
 
 export type SubjectData = {
   [key: string]: string[];
 };
 
-export const PhysicsData: SubjectData = {
-  Mechanics: [
+export const subjectData: SubjectData = {
+  'Physics/Mechanics': [
     'Physical quantities',
     'Vectors',
     'Kinematics',
@@ -67,7 +31,7 @@ export const PhysicsData: SubjectData = {
     'Periodic motion',
     'Fluid statics',
   ],
-  'Heat and Thermodynamics': [
+  'Physics/Heat and Thermodynamics': [
     'Heat and temperature',
     'Thermal expansion',
     'Quantity of heat',
@@ -76,7 +40,7 @@ export const PhysicsData: SubjectData = {
     'First law of thermodynamics',
     'Second law of thermodynamics',
   ],
-  'Wave and Optics': [
+  'Physics/Waves and Optics': [
     'Reflection at curved mirror',
     'Refraction at plane surfaces',
     'Refraction through prisms',
@@ -91,7 +55,7 @@ export const PhysicsData: SubjectData = {
     'Diffraction',
     'Polarization',
   ],
-  'Electricity and Magnetism': [
+  'Physics/Electricity and Magnetism': [
     'Electric charges',
     'Electric field',
     'Potential, potential difference and potential energy',
@@ -104,7 +68,7 @@ export const PhysicsData: SubjectData = {
     'Electromagnetic Induction',
     'Alternating currents',
   ],
-  'Modern Physics': [
+  'Physics/Modern Physics': [
     'Nuclear physics',
     'Solids',
     'Recent trends in physics',
@@ -115,10 +79,7 @@ export const PhysicsData: SubjectData = {
     'Radioactivity and nuclear reaction',
     'Recent trends in physics',
   ],
-};
-
-export const chemistryData: SubjectData = {
-  'General and Physical Chemistry': [
+  'Chemistry/General and Physical Chemistry': [
     'Foundation and Fundamentals',
     'Stoichiometry',
     'Atomic structure',
@@ -133,14 +94,14 @@ export const chemistryData: SubjectData = {
     'Thermodynamics',
     'Electrochemistry',
   ],
-  'Inorganic Chemistry': [
+  'Chemistry/Inorganic Chemistry': [
     'Chemistry of Non-metals',
     'Chemistry of metals',
     'Bio-inorganic chemistry',
     'Transition metals',
     'Studies of heavy metals',
   ],
-  'Organic Chemistry': [
+  'Chemistry/Organic Chemistry': [
     'Basic concept of organic chemistry',
     'Fundamental principles',
     'Hydrocarbons',
@@ -156,7 +117,7 @@ export const chemistryData: SubjectData = {
     'Amines',
     'Organometallic compounds',
   ],
-  'Applied Chemistry': [
+  'Chemistry/Applied Chemistry': [
     'Fundamentals of applied chemistry',
     'Modern chemical manufactures',
     'Chemistry in the service of mankind',
@@ -164,9 +125,6 @@ export const chemistryData: SubjectData = {
     'Paper and pulp',
     'Nuclear chemistry and application of radioactivity',
   ],
-};
-
-export const biologyData: SubjectData = {
   Botany: [
     'Biomolecules and cell biology',
     'Floral diversity',
@@ -191,9 +149,6 @@ export const biologyData: SubjectData = {
     'Human population and health disorders',
     'Applied biology',
   ],
-};
-
-export const MATData: SubjectData = {
   MAT: [
     'Verbal reasoning',
     'Numerical reasoning',

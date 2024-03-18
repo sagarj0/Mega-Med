@@ -21,7 +21,7 @@ const links = [
   },
   {
     href: '/admin/manage/questions',
-    label: 'Add Questions',
+    label: 'Questions',
     icon: FaFileCircleQuestion,
   },
 ];
@@ -43,9 +43,7 @@ export default function NavLinks() {
           )}
         >
           <Icon className="w-6 text-gray-700" />
-          <p className="hidden text-gray-700 md:block">
-            {label}
-          </p>
+          <p className="hidden text-gray-700 md:block">{label}</p>
         </Link>
       ))}
     </>

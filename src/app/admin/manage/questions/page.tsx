@@ -1,14 +1,16 @@
-import react from 'react';
-import AddQuestionForm from '@/ui/questions/addquesform';
-import Header from '@/ui/questions/header';
+import { Button } from '@nextui-org/react';
+import Link from 'next/link';
+import React from 'react';
 
 export default function Page() {
   return (
-    <main className=" h-full w-full flex flex-col items-center gap-16">
-      <Header />
-      
-        <AddQuestionForm />
-      
-    </main>
+    <div>
+      <h1>Create</h1>
+      <Link href="/admin/manage/questions/addQuestion">
+        <Button> Add </Button>
+      </Link>
+
+      <h1>fetching, updating and deleting, under build</h1>
+    </div>
   );
 }
