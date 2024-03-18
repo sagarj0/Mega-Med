@@ -1,9 +1,9 @@
 'use client';
 
 import React, { SetStateAction, useState } from 'react';
-import AddQuestionForm from '@/ui/questions/addquesform';
-import Header from '@/ui/questions/header';
-import BreadCrumb from '@/ui/questions/breadcrumb';
+import AddQuestionForm from '@/ui/admin/questions/addquesform';
+import Header from '@/ui/admin/questions/header';
+import BreadCrumb from '@/ui/admin/questions/breadcrumb';
 
 const Page = () => {
   const [breadCrumbVal, setBreadCrumbVal] = useState('');

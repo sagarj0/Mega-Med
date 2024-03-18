@@ -11,7 +11,7 @@ const AddQuestionForm: React.FC<{
   return (
     <form className="flex flex-col max-h-fit w-full bg-gray-50/50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8">
       <div className=" lg:col-span-3 lg:row-span-2 ">
-        <div className="h-full flex flex-col gap-4">
+        <div className="h-full flex flex-col gap-5">
           <Input
             type="text"
             label="Q."
@@ -68,12 +68,10 @@ const AddQuestionForm: React.FC<{
           <RadioGroup
             name="Options"
             label="Select correct option: "
-            className="flex flex-row w-full items-center gap-4 mt-1"
+            className="flex flex-row w-full items-center gap-4"
             orientation="horizontal"
           >
-            <Radio value="a" className="">
-              A
-            </Radio>
+            <Radio value="a">A</Radio>
             <Radio value="b">B</Radio>
             <Radio value="c">C</Radio>
             <Radio value="d">D</Radio>
@@ -85,7 +83,7 @@ const AddQuestionForm: React.FC<{
             // disableAutosize
             maxRows={4}
             size="md"
-            className="max-w-xs ml-5 mt-2"
+            className="max-w-xs ml-5"
           />
         </div>
       </div>
