@@ -71,7 +71,6 @@ export const subjectData: SubjectData = {
   'Physics/Modern Physics': [
     'Nuclear physics',
     'Solids',
-    'Recent trends in physics',
     'Electrons',
     'Photons',
     'Semiconductor devices',
