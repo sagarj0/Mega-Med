@@ -43,6 +43,11 @@
   }
 }
 
+html {
+  /* min-height: fit-content; */
+  height: 100%;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -51,6 +56,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+
+  /* max-height: 100%;*/
+  /* min-height: min-content; */
+  height: 100%;
 }
 
 @layer utilities {

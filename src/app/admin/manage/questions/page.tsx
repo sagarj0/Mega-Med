@@ -10,7 +10,7 @@ export default function Page() {
         <Button> Add </Button>
       </Link>
 
-      <h1>fetching, updating and deleting, under build</h1>
+      <h1 className="m-8">fetching, updating and deleting, under build</h1>
     </div>
   );
 }

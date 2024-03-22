@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react';
+import React, { useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { Input } from '@nextui-org/react';
 import {
   DropdownMenu,
@@ -24,7 +24,11 @@ export function MultiDropdownMenu({
   setBreadCrumbVal: Dispatch<SetStateAction<string>>;
 }) {
   const [value, setValue] = useState('');
-  setBreadCrumbVal(value);
+  const breadCrumbVal = value;
+
+  useEffect(() => {
+    setBreadCrumbVal(breadCrumbVal);
+  }, [breadCrumbVal, setBreadCrumbVal]);
 
   return (
     <DropdownMenu>
@@ -32,25 +36,25 @@ export function MultiDropdownMenu({
         <Input
           type="text"
           placeholder="Subjects / Units"
+          name="subjectDetails"
           size="md"
           classNames={{
-            mainWrapper: 'w-full',
+            mainWrapper: 'w-4/5',
             label: 'text-gray-400',
             input: 'hover:cursor-pointer',
           }}
           isRequired={true}
           isReadOnly={true}
           value={value}
-          onValueChange={setValue}
-          // isInvalid={`${value}` === ''}
-          // errorMessage="Plea}          endContent={<BsChevronDoubleDown />}
+          // onValueChange={setValue}
+          endContent={<BsChevronDoubleDown />}
           className="mb-3"
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-96 h-64 overflow-y-auto bg-gray-100">
         <DropdownMenuGroup>
           {subjects.map((subject) => {
-            const units = subjectData[subject];
+            const chapters = subjectData[subject];
             return (
               <DropdownMenuSub key={subject}>
                 <DropdownMenuSubTrigger
@@ -61,16 +65,16 @@ export function MultiDropdownMenu({
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent className="m-1 bg-gray-100">
-                    {units.map((unit) => (
+                    {chapters.map((chapter) => (
                       <DropdownMenuItem
                         className="hover:bg-blue-500"
-                        key={`${subject}/${unit}`}
+                        key={`${subject}/${chapter}`}
                         onSelect={(e) => {
-                          console.log(e);
-                          setValue(`${subject}/${unit}`);
-                        }} // This is the line that needs to be fixed
+                          // console.log(e);
+                          setValue(`${subject}/${chapter}`);
+                        }}
                       >
-                        <span>{unit}</span>
+                        <span>{chapter}</span>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuSubContent>
