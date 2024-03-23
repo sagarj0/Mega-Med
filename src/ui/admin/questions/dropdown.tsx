@@ -44,7 +44,7 @@ export function MultiDropdownMenu({
             input: 'hover:cursor-pointer',
           }}
           isRequired={true}
-          isReadOnly={true}
+          // isReadOnly={true}
           value={value}
           // onValueChange={setValue}
           endContent={<BsChevronDoubleDown />}

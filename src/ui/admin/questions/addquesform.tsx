@@ -2,6 +2,9 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 
 import { Input, Textarea, Button, RadioGroup, Radio } from '@nextui-org/react';
+// import { Label } from '@/components/ui/label';
+// import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
 import { IoSendSharp } from 'react-icons/io5';
 import { MultiDropdownMenu } from './dropdown';
 import axios from 'axios';
@@ -13,16 +16,21 @@ const AddQuestionForm: React.FC<{
   const subjectDetails = breadCrumbVal;
 
   const [subject, unit, chapter] = subjectDetails.split('/');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.target as HTMLFormElement);
 
-    const questionDetail = {
+    const formDataArray = Array.from(formData.entries());
+    console.log(formDataArray);
+
+    const questionCredential = {
       subject: subject,
       unit: unit,
       chapter: chapter,
+      // subjectDetails: formData.get('subjectDetails'),
       question: formData.get('question'),
       tag: formData.get('tag'),
       optionA: formData.get('optionA'),
@@ -32,15 +40,17 @@ const AddQuestionForm: React.FC<{
       correctAnswer: formData.get('correctAnswer'),
       explanation: formData.get('explanation'),
     };
+    console.log(questionCredential);
 
     try {
       const res = await axios.post(
         'http://localhost:3001/api/v1/manageQuestion/addQuestionManually',
-        questionDetail
+        questionCredential
       );
 
       if (res.status === 200) {
         console.log(res);
+        (e.target as HTMLFormElement).reset();
       } else {
         console.error('Failed to send form data');
       }
@@ -65,20 +75,19 @@ const AddQuestionForm: React.FC<{
               size="md"
               classNames={{
                 mainWrapper: 'w-full',
-                label: 'text-gray-400',
+                label: 'text-gray-400 after:hidden',
               }}
               className="w-3/4"
+              isRequired={true}
             />
             <Input
               type="text"
               name="tag"
-              // label="Tag"
-              // labelPlacement="outside-left"
               placeholder="Tag "
               size="md"
               classNames={{
                 mainWrapper: 'w-full',
-                label: 'text-gray-400',
+                label: 'text-gray-400 ',
               }}
               className="w-24 mr-8"
             />
@@ -93,8 +102,9 @@ const AddQuestionForm: React.FC<{
               placeholder="option a."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                label: 'text-gray-400 after:hidden',
               }}
+              isRequired={true}
             />
             <Input
               type="text"
@@ -104,8 +114,9 @@ const AddQuestionForm: React.FC<{
               placeholder="option b."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                label: 'text-gray-400 after:hidden ',
               }}
+              isRequired={true}
             />
             <Input
               type="text"
@@ -115,8 +126,9 @@ const AddQuestionForm: React.FC<{
               placeholder="option c."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                label: 'text-gray-400 after:hidden ',
               }}
+              isRequired={true}
             />
             <Input
               type="text"
@@ -126,8 +138,9 @@ const AddQuestionForm: React.FC<{
               placeholder="option d."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                label: 'text-gray-400 after:hidden ',
               }}
+              isRequired={true}
             />
           </div>
           <RadioGroup
@@ -135,6 +148,9 @@ const AddQuestionForm: React.FC<{
             label="Select correct option: "
             className="mt-2 flex flex-row w-full items-center gap-4"
             orientation="horizontal"
+            //isRequired={true} is not working...
+            isRequired={true}
+            classNames={{ label: 'text-gray-400 after:hidden ' }}
           >
             <Radio value="a" className="mr-1">
               A
@@ -149,6 +165,7 @@ const AddQuestionForm: React.FC<{
               D
             </Radio>
           </RadioGroup>
+
           <Textarea
             // label="Explanation"
             name="explanation"
