@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your and voila ....
 
 ## More About The Project
 
-As UI library
+**As UI library**
 
 - [Next UI](https://nextui.org/) is used as dependency.
 - [Shadcn/ui](https://ui.shadcn.com/) is used without dependency.
