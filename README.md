@@ -27,7 +27,7 @@ This is a official repo of Mega-Med front end side.
 
 4. Lastly
 
-Open [http://localhost:3000](http://localhost:3000) with your and voila ....
+Open [http://localhost:3000](http://localhost:3000) with your browser and voila ....
 
 ## More About The Project
 
