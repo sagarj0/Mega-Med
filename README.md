@@ -6,26 +6,24 @@ This is a official repo of Mega-Med front end side.
 
 1. Clone the repo
 
-```bash
-https://github.com/sagarj0/Mega-Med.git
-```
+   ```bash
+   https://github.com/sagarj0/Mega-Med.git
+   ```
 
 
 2. Install dependencies
 
-```bash
-npm install
-or
-npm i
+    ```bash
+    npm install
+    or
+    npm i
+    ```
 
-```
+3. Run the server
 
-3.Run the server
-
-```bash
-npm run dev
-
-````
+    ```bash
+    npm run dev
+    ```
 
 4. Lastly
 
