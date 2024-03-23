@@ -33,8 +33,8 @@ Open [http://localhost:3000](http://localhost:3000) with your and voila ....
 
 As UI library
 
-- [https://nextui.org/](Next UI) is used as dependency.
-- [https://ui.shadcn.com/](Shadcn/ui) is used without dependency.
+- [Next UI](https://nextui.org/) is used as dependency.
+- [Shadcn/ui](https://ui.shadcn.com/) is used without dependency.
 
 <!--
 To learn more about Next.js, take a look at the following resources:
