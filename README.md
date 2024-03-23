@@ -6,7 +6,7 @@ This is a official repo of Mega-Med front end side.
 
 1. Clone the repo
 
-````bash
+```bash
 https://github.com/sagarj0/Mega-Med.git
 ```
 
