@@ -17,24 +17,34 @@ Do following steps:
    ```bash
    https://github.com/rishishAryal/mega-med-backend.git
    ```
+3. Go to their root directory
 
-3. Install dependencies
+   This repo
+    ```bash
+   cd Mega-Med-Front
+   ```
+   Backend repo
+   ```bash
+   cd mega-med-backend/backend
+   ```
 
-   Install dependencies on both repos :
+5. Install dependencies
+
+   Install dependencies on both diectories :
     ```bash
     npm install
     or
     npm i
     ```
 
-4. Run the server
+6. Run the server
 
    run both repos with following command.
     ```bash
     npm run dev
     ```
 
-5. Lastly
+7. Lastly
 
 Open [http://localhost:3000](http://localhost:3000) with your browser and voila ....
 
