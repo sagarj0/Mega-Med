@@ -4,28 +4,47 @@ This is a official repo of Mega-Med front end side.
 
 ## Getting Started
 
+Since this project is under build and its backend side, from which it uses api, You need to run its backend on local server too.
+Do following steps:
+
 1. Clone the repo
 
+   This repo:
    ```bash
    https://github.com/sagarj0/Mega-Med.git
    ```
+   Backend repo:
+   ```bash
+   https://github.com/rishishAryal/mega-med-backend.git
+   ```
+3. Go to their root directory
 
+   This repo
+    ```bash
+   cd Mega-Med-Front
+   ```
+   Backend repo
+   ```bash
+   cd mega-med-backend/backend
+   ```
 
-2. Install dependencies
+5. Install dependencies
 
+   Install dependencies on both diectories :
     ```bash
     npm install
     or
     npm i
     ```
 
-3. Run the server
+6. Run the server
 
+   run both repos with following command.
     ```bash
     npm run dev
     ```
 
-4. Lastly
+7. Lastly
 
 Open [http://localhost:3000](http://localhost:3000) with your browser and voila ....
 
