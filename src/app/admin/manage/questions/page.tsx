@@ -1,5 +1,3 @@
-'use client';
-
 import { Button, RadioGroup, Radio } from '@nextui-org/react';
 import Link from 'next/link';
 import React from 'react';
