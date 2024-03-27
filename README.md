@@ -21,7 +21,7 @@ Do following steps:
 
    This repo
     ```bash
-   cd Mega-Med-Front
+   cd Mega-Med
    ```
    Backend repo
    ```bash
