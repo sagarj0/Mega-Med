@@ -1,45 +1,38 @@
 'use client';
 import React, { Dispatch, SetStateAction, useState } from 'react';
-
-import { Input, Textarea, Button, RadioGroup, Radio } from '@nextui-org/react';
-// import { Label } from '@/components/ui/label';
-// import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-
+import {
+  Input,
+  Textarea,
+  Button,
+  RadioGroup,
+  Radio,
+  CircularProgress,
+} from '@nextui-org/react';
 import { IoSendSharp } from 'react-icons/io5';
 import { MultiDropdownMenu } from './dropdown';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddQuestionForm: React.FC<{
   setBreadCrumbVal: Dispatch<SetStateAction<string>>;
-  breadCrumbVal: string;
-}> = ({ setBreadCrumbVal, breadCrumbVal }) => {
-  const subjectDetails = breadCrumbVal;
-
-  const [subject, unit, chapter] = subjectDetails.split('/');
-  const [submitted, setSubmitted] = useState(false);
+}> = ({ setBreadCrumbVal }) => {
+  const [loading, setLoading] = useState(false);
 
   const handleSubmition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.target as HTMLFormElement);
-
     const formDataArray = Array.from(formData.entries());
-    console.log(formDataArray);
 
-    const questionCredential = {
-      subject: subject,
-      unit: unit,
-      chapter: chapter,
-      // subjectDetails: formData.get('subjectDetails'),
-      question: formData.get('question'),
-      tag: formData.get('tag'),
-      optionA: formData.get('optionA'),
-      optionB: formData.get('optionB'),
-      optionC: formData.get('optionC'),
-      optionD: formData.get('optionD'),
-      correctAnswer: formData.get('correctAnswer'),
-      explanation: formData.get('explanation'),
-    };
+    const questionCredential = formDataArray.reduce(
+      (acc: { [key: string]: string }, [key, value]) => {
+        acc[key] = String(value);
+        return acc;
+      },
+      {}
+    );
+
     console.log(questionCredential);
 
     try {
@@ -49,20 +42,27 @@ const AddQuestionForm: React.FC<{
       );
 
       if (res.status === 200) {
+        setLoading(false);
         console.log(res);
+        toast.success('Question added successfully');
         (e.target as HTMLFormElement).reset();
       } else {
+        setLoading(false);
+        toast.error('Failed to add question');
         console.error('Failed to send form data');
       }
     } catch (error) {
+      setLoading(false);
+      toast.error('Error sending question data');
       console.error('An error occurred while sending form data:', error);
     }
   };
   return (
     <form
       onSubmit={handleSubmition}
-      className="flex flex-col max-h-fit w-full bg-gray-50/50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8"
+      className="flex flex-col h-full w-full bg-gray-50/50  rounded-md px-6 py-8 lg:grid lg:grid-cols-5 lg:grid-rows-2 gap-8"
     >
+      <Toaster />
       <div className=" lg:col-span-3 lg:row-span-2 ">
         <div className="h-full flex flex-col gap-5">
           <div className=" w-full flex flex-row justify-between">
@@ -75,7 +75,7 @@ const AddQuestionForm: React.FC<{
               size="md"
               classNames={{
                 mainWrapper: 'w-full',
-                label: 'text-gray-400 after:hidden',
+                label: 'text-gray-400',
               }}
               className="w-3/4"
               isRequired={true}
@@ -102,7 +102,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option a."
               size="md"
               classNames={{
-                label: 'text-gray-400 after:hidden',
+                label: 'text-gray-400',
               }}
               isRequired={true}
             />
@@ -114,7 +114,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option b."
               size="md"
               classNames={{
-                label: 'text-gray-400 after:hidden ',
+                label: 'text-gray-400',
               }}
               isRequired={true}
             />
@@ -126,7 +126,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option c."
               size="md"
               classNames={{
-                label: 'text-gray-400 after:hidden ',
+                label: 'text-gray-400',
               }}
               isRequired={true}
             />
@@ -138,7 +138,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option d."
               size="md"
               classNames={{
-                label: 'text-gray-400 after:hidden ',
+                label: 'text-gray-400',
               }}
               isRequired={true}
             />
@@ -150,7 +150,7 @@ const AddQuestionForm: React.FC<{
             orientation="horizontal"
             //isRequired={true} is not working...
             isRequired={true}
-            classNames={{ label: 'text-gray-400 after:hidden ' }}
+            classNames={{ label: 'text-gray-400' }}
           >
             <Radio value="a" className="mr-1">
               A
@@ -186,8 +186,23 @@ const AddQuestionForm: React.FC<{
           size="lg"
           radius="lg"
           color="primary"
-          endContent={<IoSendSharp className="text-xl" />}
-          className="xl:-ml-4"
+          endContent={
+            loading ? (
+              <CircularProgress
+                size="md"
+                color="primary"
+                aria-label="Loading..."
+                strokeWidth={5}
+                classNames={{
+                  svg: 'w-6',
+                  track: 'stroke-orange-900',
+                }}
+              />
+            ) : (
+              <IoSendSharp className="text-md" />
+            )
+          }
+          className="xl:-ml-4 w-28"
           type="submit"
         >
           Save

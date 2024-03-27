@@ -13,10 +13,7 @@ const Page = () => {
       <Header />
       {/* //BreadCrub here */}
       <BreadCrumb breadCrumbVal={breadCrumbVal} />
-      <AddQuestionForm
-        setBreadCrumbVal={setBreadCrumbVal}
-        breadCrumbVal={breadCrumbVal}
-      />
+      <AddQuestionForm setBreadCrumbVal={setBreadCrumbVal} />
     </main>
   );
 };

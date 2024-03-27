@@ -5,8 +5,10 @@ import React from 'react';
 export default function Page() {
   return (
     <div>
-      <h1>Create the button below to add the question</h1>
-      <Link href="/admin/manage/questions/addQuestion">
+      <h1 className="m-8">Added question here</h1>
+      <p className="m-8">or</p>
+      <h1 className="m-8">Add question Manually</h1>
+      <Link className="m-8" href="/admin/manage/questions/addQuestion">
         <Button> Add</Button>
       </Link>
     </div>
