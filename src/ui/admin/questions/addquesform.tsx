@@ -25,6 +25,8 @@ const AddQuestionForm: React.FC<{
     const formData = new FormData(e.target as HTMLFormElement);
     const formDataArray = Array.from(formData.entries());
 
+    // console.log(formDataArray);
+
     const questionCredential = formDataArray.reduce(
       (acc: { [key: string]: string }, [key, value]) => {
         acc[key] = String(value);
@@ -33,7 +35,7 @@ const AddQuestionForm: React.FC<{
       {}
     );
 
-    console.log(questionCredential);
+    // console.log(questionCredential);
 
     try {
       const res = await axios.post(
