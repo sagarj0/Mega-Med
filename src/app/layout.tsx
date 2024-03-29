@@ -23,7 +23,9 @@ export default function RootLayout({
         bg-gradient-to-r from-purple-800/5 via-blue-400/5 to-purple-800/5
          `}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="m-auto w-full h-full">{children}</div>
+        </Providers>
       </body>
     </html>
   );

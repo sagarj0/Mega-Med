@@ -1,6 +1,6 @@
 'use client';
 
-import react from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { Input, Button } from '@nextui-org/react';
 import MegaMedLogo from '@/ui/MegaMedLogo';
@@ -15,11 +15,10 @@ export default function SignupPage() {
   return (
     <main className="flex items-center justify-center h-fit">
       <div className="flex flex-col items-center justify-center mb-6">
-        <section className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-4 m-4 w-96">
+        <section className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-6 m-4 w-[375px]">
           <MegaMedLogo />
           <h1 className="text-center text-gray-400">
-            Sign up to unlock your potential in medical
-            enrance exams.
+            Sign up to unlock your potential in medical enrance exams.
           </h1>
           <form className="flex flex-col gap-3 w-full">
             <Input
@@ -28,6 +27,11 @@ export default function SignupPage() {
               size="sm"
               radius="lg"
               isRequired={true}
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
             <Input
               type="email"
@@ -35,12 +39,22 @@ export default function SignupPage() {
               size="sm"
               radius="lg"
               isRequired={true}
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
             <Input
               type="tel"
               label="Mobile Number"
               size="sm"
               radius="lg"
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
             <Input
               type={isVisible ? 'text' : 'password'}
@@ -61,12 +75,13 @@ export default function SignupPage() {
               size="sm"
               radius="lg"
               isRequired={true}
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
-            <Button
-              type="submit"
-              color="primary"
-              radius="full"
-            >
+            <Button type="submit" color="primary" radius="full">
               Signup
             </Button>
           </form>
