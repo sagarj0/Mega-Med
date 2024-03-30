@@ -32,11 +32,11 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   }, [subject]); // Re-run effect when `subject` changes
 
   return (
-    <div className="bg-gray-50/30">
+    <div className="bg-gray-50/30 rounded-md">
       <Table
         aria-label="Dynamic content"
         classNames={{
-          wrapper: 'bg-gray-50/50',
+          wrapper: 'bg-gray-50/50 rounded-md',
         }}
       >
         <TableHeader columns={columns}>
