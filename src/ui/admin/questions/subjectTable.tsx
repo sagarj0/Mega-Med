@@ -10,6 +10,7 @@ import {
 } from '@nextui-org/react';
 import axios from 'axios';
 import { columns } from '@/datas/tab';
+import { backUrl } from '@/datas/variable';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const [questions, setQuestions] = useState([]);
@@ -18,9 +19,10 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
     const fetchQuestions = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3001/api/v1/manageQuestion/getQuestions/${subject}`
+          `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`
         );
         setQuestions(res.data.data);
+        console.log(res.data.data);
       } catch (error) {
         console.error('An error occurred while fetching questions:', error);
       }
