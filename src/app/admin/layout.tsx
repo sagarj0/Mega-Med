@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <SideNav />
       </div>
       <div className="h-full md:overflow-y-auto md:w-5/6">
-        <main className=" md:h-full w-full flex flex-col items-center gap-4 h-fit">
+        <main className="w-full h-full flex flex-col items-center gap-4 ">
           <Header />
           {children}
         </main>

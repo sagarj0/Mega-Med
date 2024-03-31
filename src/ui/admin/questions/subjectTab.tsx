@@ -9,7 +9,7 @@ export default function SubjectTabs() {
   const [selectedTab, setSelectedTab] = useState('Physics');
 
   return (
-    <div className="flex w-full flex-col mt-2">
+    <div className="flex w-full h-full flex-col mt-2">
       <Tabs
         aria-label="Dynamic tabs"
         items={tabs}
