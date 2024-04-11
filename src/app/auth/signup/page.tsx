@@ -12,6 +12,22 @@ export default function SignupPage() {
   const [isVisible, setIsVisible] = useState(false);
   // const toogleVisibility = () => setIsVisible(!isVisible);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    const signupCredential = Array.from(formData.entries()).reduce(
+      (acc: { [key: string]: FormDataEntryValue }, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+
+    console.log('signup detail is ', signupCredential);
+  };
+
   return (
     <main className="flex items-center justify-center h-fit">
       <div className="flex flex-col items-center justify-center mb-6">
@@ -20,7 +36,7 @@ export default function SignupPage() {
           <h1 className="text-center text-gray-400">
             Sign up to unlock your potential in medical enrance exams.
           </h1>
-          <form className="flex flex-col gap-3 w-full">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
             <Input
               type="text"
               label="Full Name"

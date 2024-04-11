@@ -44,8 +44,8 @@
 }
 
 html {
-  /* min-height: fit-content; */
-  height: 100%;
+  min-height: fit-content;
+  height: 100vh;
 }
 
 body {
@@ -58,7 +58,7 @@ body {
     rgb(var(--background-start-rgb));
 
   /* max-height: 100%;*/
-  /* min-height: min-content; */
+  min-height: fit-content;
   height: 100%;
 }
 

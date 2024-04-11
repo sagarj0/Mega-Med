@@ -24,7 +24,7 @@ export default function RootLayout({
          `}
       >
         <Providers>
-          <div className="m-auto w-full h-full">{children}</div>
+          <div className="m-auto w-full h-fit">{children}</div>
         </Providers>
       </body>
     </html>
