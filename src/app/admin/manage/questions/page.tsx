@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Link } from '@nextui-org/react';
 import React from 'react';
 import SubjectTabs from '@/ui/admin/questions/subjectTab';
