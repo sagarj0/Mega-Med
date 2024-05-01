@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Button, Link } from '@nextui-org/react';
 
