@@ -37,7 +37,7 @@ export default function SignupPage() {
 
     try {
       const res = await axios.post(
-        `http://localhost:3001/api/v1/auth/register`,
+        `${backUrl}/api/v1/auth/register`,
         signupCredential
       );
 

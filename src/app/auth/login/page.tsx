@@ -10,6 +10,7 @@ import { FcGoogle } from 'react-icons/fc';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
+import { backUrl } from '@/datas/variable';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function LoginPage() {
 
     try {
       const res = await axios.post(
-        'http://localhost:3001/api/v1/auth/login',
+        `${backUrl}/api/v1/auth/login`,
         loginCredential
       );
 
