@@ -1,3 +1,7 @@
+export type SubjectData = {
+  [key: string]: string[];
+};
+
 export const subjects = [
   'Physics/Mechanics',
   'Physics/Heat and Thermodynamics',
@@ -12,10 +16,6 @@ export const subjects = [
   'Zoology',
   'MAT',
 ];
-
-export type SubjectData = {
-  [key: string]: string[];
-};
 
 export const subjectData: SubjectData = {
   'Physics/Mechanics': [

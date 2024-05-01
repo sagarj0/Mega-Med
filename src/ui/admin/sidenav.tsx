@@ -7,7 +7,7 @@ export default function SideNav() {
   return (
     <nav
       className="
-      flex h-full flex-col "
+      flex h-full flex-col bg-gray-50/50 rounded-lg"
     >
       <Link
         className="mb-2 flex h-20 items-center justify-center rounded-md bg-blue-700 p-4  md:h-40"

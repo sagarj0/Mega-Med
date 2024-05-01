@@ -9,15 +9,10 @@ const Page = () => {
   const [breadCrumbVal, setBreadCrumbVal] = useState('');
 
   return (
-    <main className=" h-full w-full flex flex-col items-center gap-4">
-      <Header />
-      {/* //BreadCrub here */}
+    <>
       <BreadCrumb breadCrumbVal={breadCrumbVal} />
-      <AddQuestionForm
-        setBreadCrumbVal={setBreadCrumbVal}
-        breadCrumbVal={breadCrumbVal}
-      />
-    </main>
+      <AddQuestionForm setBreadCrumbVal={setBreadCrumbVal} />
+    </>
   );
 };
 

@@ -1,49 +1,110 @@
 'use client';
 
-import react from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { Input, Button } from '@nextui-org/react';
 import MegaMedLogo from '@/ui/MegaMedLogo';
 import Link from 'next/link';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import axios from 'axios';
+import { backUrl } from '@/datas/variable';
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 export default function SignupPage() {
+  const router = useRouter();
+
   const [isVisible, setIsVisible] = useState(false);
   // const toogleVisibility = () => setIsVisible(!isVisible);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    const formDataArray = Array.from(formData.entries());
+
+    const signupCredential = formDataArray.reduce(
+      (acc: { [key: string]: string }, [key, value]) => {
+        acc[key] = String(value);
+        return acc;
+      },
+      {}
+    );
+
+    console.log('signup detail is ', signupCredential);
+
+    try {
+      const res = await axios.post(
+        `${backUrl}/api/v1/auth/register`,
+        signupCredential
+      );
+
+      if (res.status === 201) {
+        console.log(res);
+        toast.success('Registered Successfully');
+        (e.target as HTMLFormElement).reset();
+
+        router.push(`/${res.data.data.user.role}`);
+      }
+    } catch (error) {
+      console.error('Failed to register', error);
+      toast.error('Failed to register');
+    }
+  };
 
   return (
     <main className="flex items-center justify-center h-fit">
       <div className="flex flex-col items-center justify-center mb-6">
-        <section className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-4 m-4 w-96">
+        <Toaster />
+        <section className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-6 m-4 w-[375px]">
           <MegaMedLogo />
           <h1 className="text-center text-gray-400">
-            Sign up to unlock your potential in medical
-            enrance exams.
+            Sign up to unlock your potential in medical enrance exams.
           </h1>
-          <form className="flex flex-col gap-3 w-full">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
             <Input
               type="text"
+              name="name"
               label="Full Name"
               size="sm"
               radius="lg"
               isRequired={true}
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
             <Input
               type="email"
+              name="email"
               label="Email Address"
               size="sm"
               radius="lg"
               isRequired={true}
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
             <Input
               type="tel"
+              name="number"
               label="Mobile Number"
               size="sm"
               radius="lg"
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
             <Input
               type={isVisible ? 'text' : 'password'}
+              name="password"
               endContent={
                 isVisible ? (
                   <FaRegEyeSlash
@@ -61,12 +122,13 @@ export default function SignupPage() {
               size="sm"
               radius="lg"
               isRequired={true}
+              classNames={{
+                base: 'h-10',
+                label: 'text-xs p-0 pb-1',
+                inputWrapper: 'pb-0',
+              }}
             />
-            <Button
-              type="submit"
-              color="primary"
-              radius="full"
-            >
+            <Button type="submit" color="primary" radius="full">
               Signup
             </Button>
           </form>

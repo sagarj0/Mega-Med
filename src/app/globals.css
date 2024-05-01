@@ -44,8 +44,8 @@
 }
 
 html {
-  /* min-height: fit-content; */
-  height: 100%;
+  min-height: fit-content;
+  height: 100vh;
 }
 
 body {
@@ -58,7 +58,7 @@ body {
     rgb(var(--background-start-rgb));
 
   /* max-height: 100%;*/
-  /* min-height: min-content; */
+  min-height: fit-content;
   height: 100%;
 }
 
@@ -71,6 +71,18 @@ body {
 [data-overlay-container='true'] {
   height: 100%;
   width: 100%;
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 /*next-ui bg color end*/

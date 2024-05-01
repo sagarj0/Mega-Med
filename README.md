@@ -1,5 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+## Mega-Med
 This is a official repo of Mega-Med front end side.
 
 ## Getting Started
@@ -21,7 +20,7 @@ Do following steps:
 
    This repo
     ```bash
-   cd Mega-Med-Front
+   cd Mega-Med
    ```
    Backend repo
    ```bash
@@ -57,6 +56,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser and voila 
 
 <!--
 To learn more about Next.js, take a look at the following resources:
+
+<-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
  [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
  [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
