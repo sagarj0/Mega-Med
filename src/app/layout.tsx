@@ -17,7 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="primary">
+    <html
+      lang="en"
+      className="min-h-full bg-gradient-to-t from-blue-100  to-gray-200 text-slate-900  "
+    >
       <body className={`${inter.className} `}>
         <Providers>
           <div className="m-auto w-full h-fit">{children}</div>
