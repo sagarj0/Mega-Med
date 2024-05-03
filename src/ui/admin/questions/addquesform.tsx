@@ -68,19 +68,32 @@ const AddQuestionForm: React.FC<{
       <Toaster />
       <div className=" lg:col-span-3 lg:row-span-2 ">
         <div className="h-full flex flex-col gap-5">
-          <div className=" w-full flex flex-row justify-between">
+          <div className=" w-full flex flex-row justify-center gap-2">
+            <Input
+              type="text"
+              name="questionNo"
+              label="Q."
+              labelPlacement="outside-left"
+              placeholder="Q.No."
+              size="md"
+              classNames={{
+                mainWrapper: 'w-full',
+                inputWrapper: 'bg-gray-300',
+              }}
+              className="w-20"
+              isRequired={true}
+            />
             <Input
               type="text"
               name="question"
-              label="Q."
               labelPlacement="outside-left"
               placeholder="Write Question ..."
               size="md"
               classNames={{
                 mainWrapper: 'w-full',
-                label: 'text-gray-400',
+                inputWrapper: 'bg-gray-300',
               }}
-              className="w-3/4"
+              className="w-[70%]"
               isRequired={true}
             />
             <Input
@@ -90,9 +103,9 @@ const AddQuestionForm: React.FC<{
               size="md"
               classNames={{
                 mainWrapper: 'w-full',
-                label: 'text-gray-400 ',
+                inputWrapper: 'bg-gray-300',
               }}
-              className="w-24 mr-8"
+              className="w-20 mr-8"
             />
           </div>
 
@@ -105,7 +118,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option a."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                inputWrapper: 'bg-gray-300',
               }}
               isRequired={true}
             />
@@ -117,7 +130,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option b."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                inputWrapper: 'bg-gray-300',
               }}
               isRequired={true}
             />
@@ -129,7 +142,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option c."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                inputWrapper: 'bg-gray-300',
               }}
               isRequired={true}
             />
@@ -141,7 +154,7 @@ const AddQuestionForm: React.FC<{
               placeholder="option d."
               size="md"
               classNames={{
-                label: 'text-gray-400',
+                inputWrapper: 'bg-gray-300',
               }}
               isRequired={true}
             />
@@ -153,7 +166,7 @@ const AddQuestionForm: React.FC<{
             orientation="horizontal"
             //isRequired={true} is not working...
             isRequired={true}
-            classNames={{ label: 'text-gray-400' }}
+            classNames={{ label: 'text-slate-800' }}
           >
             <Radio value="a" className="mr-1">
               A
@@ -175,6 +188,9 @@ const AddQuestionForm: React.FC<{
             labelPlacement="outside"
             placeholder="Explainaton ..."
             // disableAutosize
+            classNames={{
+              inputWrapper: 'bg-gray-300',
+            }}
             maxRows={4}
             size="md"
             className="max-w-xs ml-5 mt-4"
