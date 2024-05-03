@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="min-h-full bg-gradient-to-t from-blue-100  to-gray-200 text-slate-900  "
+      className="min-h-full bg-gradient-to-t from-sky-50  to-gray-200 text-slate-900  "
     >
       <body className={`${inter.className} `}>
         <Providers>
