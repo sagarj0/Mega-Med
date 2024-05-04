@@ -32,6 +32,12 @@
   .primary {
     @apply text-slate-900;
   }
+  .btn-filled {
+    @apply h-10 px-4 place-content-center rounded-3xl bg-[#4a3aff] text-gray-100;
+  }
+  .btn-empty {
+    @apply h-10 px-4 place-content-center rounded-3xl border border-slate-900  text-slate-900;
+  }
 }
 
 /*next-ui bg color end*/
