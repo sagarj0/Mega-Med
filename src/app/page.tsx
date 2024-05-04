@@ -11,7 +11,11 @@ interface NavItemProps {
 }
 
 const NavItem: React.FC<NavItemProps> = ({ children }) => {
-  return <div className="self-stretch cursor-pointer my-auto">{children}</div>;
+  return (
+    <div className="self-stretch cursor-pointer my-auto text-base ">
+      {children}
+    </div>
+  );
 };
 
 const navItems = ['Home', 'About us', 'Tests', 'Mentors', 'Contact us'];
@@ -57,9 +61,9 @@ function MyComponent() {
                     Choice For
                     <span className="text-orange-500"> Prepration</span>
                   </h1>
-                  <p className="mt-10 text-xl leading-9 text-zinc-500 max-md:max-w-full">
+                  <p className="mt-10  leading-9 text-zinc-500 max-md:max-w-full">
                     Welcome to Mega-Med: Improve your medical entrance exams
-                    <hr />
+                    <br />
                     Prepare for your medical entrance exams with Mega-Med. Take
                     tests, talk to mentors, and track your progress. Join us and
                     succeed in your medical career.
