@@ -39,8 +39,8 @@ export function MultiDropdownMenu({
           name="subjectDetails"
           size="md"
           classNames={{
-            mainWrapper: 'w-4/5',
-            label: 'text-gray-400',
+            mainWrapper: 'w-4/5 text-black',
+            inputWrapper: 'border border-gray-500',
             input: 'hover:cursor-pointer',
           }}
           isRequired={true}
@@ -51,7 +51,7 @@ export function MultiDropdownMenu({
           className="mb-3"
         />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80 h-64 overflow-y-auto bg-gray-100 no-scrollbar -mt-0.5">
+      <DropdownMenuContent className="w-80 h-64 overflow-y-auto bg-gray-300 border-gray-500 no-scrollbar -mt-0.5">
         <DropdownMenuGroup>
           {subjects.map((subject) => {
             const chapters = subjectData[subject];
@@ -64,10 +64,10 @@ export function MultiDropdownMenu({
                   <span>{subject}</span>
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
-                  <DropdownMenuSubContent className="m-1 bg-gray-100 max-w-96 ">
+                  <DropdownMenuSubContent className="m-1 bg-gray-300 border-gray-500 max-w-96 ">
                     {chapters.map((chapter) => (
                       <DropdownMenuItem
-                        className="hover:bg-blue-500"
+                        className="hover:bg-blue-500 text-black "
                         key={`${subject}/${chapter}`}
                         onSelect={(e) => {
                           // console.log(e);

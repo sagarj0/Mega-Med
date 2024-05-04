@@ -32,15 +32,16 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   }, [subject]); // Re-run effect when `subject` changes
 
   return (
-    <div className="bg-gray-50/30 h-96 overflow-y-auto rounded-md">
+    <div className=" h-[500px] overflow-y-auto rounde-xl ">
       <Table
+        isHeaderSticky
         aria-label="Dynamic content"
         classNames={{
-          wrapper: 'bg-gray-50/50 h-full rounded-md',
+          wrapper: ' h-full rounded-xl bg-gray-300  p-0',
         }}
-        className="h-full"
+        className="h-full  "
       >
-        <TableHeader columns={columns}>
+        <TableHeader columns={columns} className="w-full">
           {(column) => (
             <TableColumn key={column.key}>{column.label}</TableColumn>
           )}

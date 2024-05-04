@@ -17,14 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full  primary ">
       <body
-        className={`${inter.className}
-        bg-gradient-to-r from-purple-800/5 via-blue-400/5 to-purple-800/5
-         `}
+        className={`${inter.className} min-h-full h-fit bg-gradient-to-t from-sky-50  to-gray-200 text-slate-900 `}
       >
         <Providers>
-          <div className="m-auto w-full h-fit">{children}</div>
+          <div className=" w-full h-full">{children}</div>
         </Providers>
       </body>
     </html>
