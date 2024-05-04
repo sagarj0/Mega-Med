@@ -63,7 +63,7 @@ const AddQuestionForm: React.FC<{
   return (
     <form
       onSubmit={handleSubmition}
-      className="flex flex-col h-full  w-full bg-gray-300  rounded-md pl-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
+      className="flex flex-col min-h-fit h-full  w-full bg-gray-300  rounded-md pl-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
     >
       <Toaster />
       <div className=" w-full lg:w-3/5 min-h-[400px] max-h-[800px] flex flex-col items-stretch lg:justify-between gap-5">
@@ -216,7 +216,7 @@ const AddQuestionForm: React.FC<{
           }}
           maxRows={4}
           size="md"
-          className="max-w-xs ml-5 mt-4"
+          className="max-w-xs lg:ml-5 mt-4"
         />
       </div>
       <div className=" w-full lg:w-2/5 lg:min-h-[400px] lg:max-h-[800px]  flex flex-col items-start lg:justify-between gap-5 ">

@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="w-full md:h-full flex-none md:w-64 h-fit ">
         <SideNav />
       </div>
-      <div className="h-[97vh] md:w-5/6">
+      <div className="h-[96vh] md:w-5/6">
         <main className="w-full h-full flex flex-col items-center gap-4 ">
           <Header />
           {children}
