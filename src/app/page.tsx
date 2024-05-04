@@ -4,6 +4,7 @@ import React from 'react';
 import { Button, Link } from '@nextui-org/react';
 import Navbar from '@/ui/home-page/navbar';
 import Image from 'next/image';
+import { FiMenu } from 'react-icons/fi';
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -18,17 +19,18 @@ const navItems = ['Home', 'About us', 'Tests', 'Mentors', 'Contact us'];
 function MyComponent() {
   return (
     <div className="flex flex-col self-stretch  py-10 w-full bg-orange-50 max-md:px-5 max-md:max-w-full">
-      <div className="max-w-screen-2xl px-20 mx-auto ">
-        <header className="flex gap-5 justify-between self-center w-full  max-md:flex-wrap max-md:max-w-full">
+      <div className="max-w-screen-2xl  mx-auto ">
+        <header className="flex gap-5 fixed top-0 shadow-lg h-20 z-50 px-20 bg-orange-50 justify-between items-center self-center w-full  max-md:flex-wrap max-md:max-w-full">
           <div className="flex justify-center items-center gap-2 w-32 my-auto text-2xl font-bold leading-8">
             <Image
               src="/MegaMedLogo.png"
               alt="MEGA Mentorship logo"
-              width={110}
+              width={90}
               height={50}
             />
           </div>
-          <nav className="flex gap-5 justify-between items-center text-lg font-semibold max-md:flex-wrap max-md:max-w-full">
+
+          <nav className="hidden md:flex gap-5 justify-between items-center text-lg font-semibold max-md:flex-wrap max-md:max-w-full">
             {navItems.map((item) => (
               <NavItem key={item}>{item}</NavItem>
             ))}
@@ -40,8 +42,12 @@ function MyComponent() {
               Sign up
             </Link>
           </nav>
+
+          <nav className=" md:hidden">
+            <FiMenu className="w-8 h-8 text-gray-800" />
+          </nav>
         </header>
-        <main className="flex overflow-hidden relative flex-col justify-center px-5 py-10 w-full min-h-[756px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
+        <main className="flex overflow-hidden relative flex-col justify-center  px-24 py-10 w-full min-h-[756px] max-md:px-5 max-md:mt-10 max-md:max-w-full">
           <div className="relative  max-md:mr-2.5 max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col max-md:gap-0">
               <div className="flex flex-col w-[39%] max-md:ml-0 max-md:w-full">
