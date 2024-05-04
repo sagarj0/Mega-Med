@@ -63,11 +63,11 @@ const AddQuestionForm: React.FC<{
   return (
     <form
       onSubmit={handleSubmition}
-      className="flex flex-col h-full  w-full bg-gray-300  rounded-md px-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
+      className="flex flex-col h-full  w-full bg-gray-300  rounded-md pl-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
     >
       <Toaster />
-      <div className=" w-full lg:w-3/5 min-h-[400px] max-h-[800px] flex flex-col justify-between">
-        <div className=" w-full flex flex-row justify-center gap-2">
+      <div className=" w-full lg:w-3/5 min-h-[400px] max-h-[800px] flex flex-col items-stretch lg:justify-between gap-5">
+        <div className=" w-full flex flex-row lg:justify-center lg:gap-2">
           <Input
             type="text"
             name="questionNo"
@@ -92,7 +92,7 @@ const AddQuestionForm: React.FC<{
               mainWrapper: 'w-full',
               inputWrapper: 'border border-gray-500',
             }}
-            className="w-[70%]"
+            className="w-[76%]"
             isRequired={true}
           />
           <Input
