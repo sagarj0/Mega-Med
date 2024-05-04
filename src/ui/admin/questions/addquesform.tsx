@@ -36,11 +36,11 @@ const AddQuestionForm: React.FC<{
       {}
     );
 
-    // console.log(questionCredential);
+    console.log(questionCredential);
 
     try {
       const res = await axios.post(
-        `${backUrl}/api/v1/manageQuestion/addQuestionManually`,
+        `http://localhost:3001/api/v1/manageQuestion/addQuestionManually`,
         questionCredential
       );
 
@@ -63,10 +63,10 @@ const AddQuestionForm: React.FC<{
   return (
     <form
       onSubmit={handleSubmition}
-      className="flex flex-col h-full  w-full bg-gray-50/50  rounded-md px-6 py-8 lg:flex-row items-stretch justify-between"
+      className="flex flex-col h-full  w-full bg-gray-300  rounded-md px-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
     >
       <Toaster />
-      <div className=" w-3/5 min-h-[400px] max-h-[800px] flex flex-col justify-between">
+      <div className=" w-full lg:w-3/5 min-h-[400px] max-h-[800px] flex flex-col justify-between">
         <div className=" w-full flex flex-row justify-center gap-2">
           <Input
             type="text"
@@ -167,16 +167,40 @@ const AddQuestionForm: React.FC<{
           isRequired={true}
           classNames={{ label: 'text-slate-800' }}
         >
-          <Radio value="a" className="mr-1">
+          <Radio
+            classNames={{
+              wrapper: 'bg-white border  border-gray-500',
+            }}
+            value="a"
+            className="mr-1"
+          >
             A
           </Radio>
-          <Radio value="b" className="mr-1">
+          <Radio
+            classNames={{
+              wrapper: 'bg-white border  border-gray-500',
+            }}
+            value="b"
+            className="mr-1"
+          >
             B
           </Radio>
-          <Radio value="c" className="mr-1">
+          <Radio
+            classNames={{
+              wrapper: 'bg-white border  border-gray-500',
+            }}
+            value="c"
+            className="mr-1"
+          >
             C
           </Radio>
-          <Radio value="d" className="mr-1">
+          <Radio
+            classNames={{
+              wrapper: 'bg-white border  border-gray-500',
+            }}
+            value="d"
+            className="mr-1"
+          >
             D
           </Radio>
         </RadioGroup>
@@ -195,7 +219,7 @@ const AddQuestionForm: React.FC<{
           className="max-w-xs ml-5 mt-4"
         />
       </div>
-      <div className=" w-2/5 min-h-[400px] max-h-[800px]  flex flex-col items-start justify-between">
+      <div className=" w-full lg:w-2/5 lg:min-h-[400px] lg:max-h-[800px]  flex flex-col items-start lg:justify-between gap-5 ">
         <MultiDropdownMenu setBreadCrumbVal={setBreadCrumbVal} />
         <Button
           size="lg"
