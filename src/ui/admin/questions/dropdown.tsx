@@ -40,7 +40,7 @@ export function MultiDropdownMenu({
           size="md"
           classNames={{
             mainWrapper: 'w-4/5 text-black',
-            inputWrapper: 'bg-gray-300',
+            inputWrapper: 'border border-gray-500',
             input: 'hover:cursor-pointer',
           }}
           isRequired={true}
