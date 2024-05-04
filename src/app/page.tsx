@@ -20,7 +20,7 @@ function MyComponent() {
   return (
     <div className="flex flex-col self-stretch  py-10 w-full bg-orange-50 max-md:px-5 max-md:max-w-full">
       <div className="max-w-screen-2xl  mx-auto ">
-        <header className="flex gap-5 fixed top-0 shadow-lg h-20 z-50 px-20 bg-orange-50 justify-between items-center self-center w-full  max-md:flex-wrap max-md:max-w-full">
+        <header className="flex gap-5 fixed top-0 shadow-md h-[85px] z-50 px-20 bg-orange-50 justify-between items-center self-center w-full  max-md:flex-wrap max-md:max-w-full">
           <div className="flex justify-center items-center gap-2 w-32 my-auto text-2xl font-bold leading-8">
             <Image
               src="/MegaMedLogo.png"
