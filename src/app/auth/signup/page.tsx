@@ -11,6 +11,7 @@ import axios from 'axios';
 import { backUrl } from '@/datas/variable';
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { FiArrowLeft } from 'react-icons/fi';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -55,12 +56,17 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="flex items-center justify-center h-fit">
+    <main className="flex flex-col px-20 py-8 items-center justify-center h-fit">
+      <Link href="/" className=" w-full flex items-center gap-2 ">
+        <FiArrowLeft className="text-2xl cursor-pointer" />
+        <p>Back to home</p>
+      </Link>
+
       <div className="flex flex-col items-center justify-center mb-6">
         <Toaster />
-        <section className="flex flex-col items-center gap-6 border-2 rounded-md radius px-8 py-6 m-4 w-[375px]">
+        <section className="flex flex-col items-center gap-6 border border-gray-500 rounded-md radius px-8 py-6 m-4 w-[375px]">
           <MegaMedLogo />
-          <h1 className="text-center text-gray-400">
+          <h1 className="text-center">
             Sign up to unlock your potential in medical enrance exams.
           </h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
@@ -74,7 +80,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0',
+                inputWrapper: 'pb-0 border border-gray-500',
               }}
             />
             <Input
@@ -87,7 +93,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0',
+                inputWrapper: 'pb-0 border border-gray-500',
               }}
             />
             <Input
@@ -99,7 +105,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0',
+                inputWrapper: 'pb-0 border border-gray-500',
               }}
             />
             <Input
@@ -109,12 +115,12 @@ export default function SignupPage() {
                 isVisible ? (
                   <FaRegEyeSlash
                     onClick={() => setIsVisible(false)}
-                    className="cursor-pointer text-gray-500 text-xl"
+                    className="cursor-pointer text-xl"
                   />
                 ) : (
                   <FaRegEye
                     onClick={() => setIsVisible(true)}
-                    className="cursor-pointer text-gray-500 text-xl"
+                    className="cursor-pointer text-xl"
                   />
                 )
               }
@@ -125,7 +131,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0',
+                inputWrapper: 'pb-0 border border-gray-500',
               }}
             />
             <Button type="submit" color="primary" radius="full">
