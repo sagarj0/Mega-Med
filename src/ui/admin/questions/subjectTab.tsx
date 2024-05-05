@@ -15,9 +15,10 @@ export default function SubjectTabs() {
         items={tabs}
         color="primary"
         classNames={{
-          tabList: 'w-3/4 p-0  gap-0  m-auto rounded-t-lg rounded-b-none ',
+          tabList:
+            'w-3/4 p-0  gap-0  m-auto rounded-t-lg rounded-b-none border-gray-500 border-x border-t z-10 h-[102%] ',
           // panel: 'w-full p-0  bg-gray-50/30 rounded-lg ',
-          tab: 'py-5 rounded-t-md',
+          tab: 'py-5 self-stretch rounded-t-md',
           tabContent:
             ' group-data-[selected=true]:text-base text-slate-800 font-medium  text-base ',
           cursor: 'h-full  rounded-t-md rounded-b-none',

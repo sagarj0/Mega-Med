@@ -38,6 +38,10 @@
   .btn-empty {
     @apply h-10 px-4 place-content-center rounded-3xl border border-slate-900  text-slate-900;
   }
+
+  .border-primary {
+    @apply border border-gray-500   rounded-xl;
+  }
 }
 
 /*next-ui bg color end*/

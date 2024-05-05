@@ -63,7 +63,7 @@ const AddQuestionForm: React.FC<{
   return (
     <form
       onSubmit={handleSubmition}
-      className="flex flex-col min-h-fit h-full  w-full bg-gray-300  rounded-md pl-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
+      className="flex flex-col min-h-fit h-full  w-full bg-gray-300 border-primary  pl-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
     >
       <Toaster />
       <div className=" w-full lg:w-3/5 min-h-[400px] max-h-[800px] flex flex-col items-stretch lg:justify-between gap-5">
@@ -77,7 +77,7 @@ const AddQuestionForm: React.FC<{
             size="md"
             classNames={{
               mainWrapper: 'w-full',
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary ',
             }}
             className="w-20"
             isRequired={true}
@@ -90,7 +90,7 @@ const AddQuestionForm: React.FC<{
             size="md"
             classNames={{
               mainWrapper: 'w-full',
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary',
             }}
             className="w-[76%]"
             isRequired={true}
@@ -102,7 +102,7 @@ const AddQuestionForm: React.FC<{
             size="md"
             classNames={{
               mainWrapper: 'w-full',
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary',
             }}
             className="w-20 mr-8"
           />
@@ -117,7 +117,7 @@ const AddQuestionForm: React.FC<{
             placeholder="option a."
             size="md"
             classNames={{
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary',
             }}
             isRequired={true}
           />
@@ -129,7 +129,7 @@ const AddQuestionForm: React.FC<{
             placeholder="option b."
             size="md"
             classNames={{
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary',
             }}
             isRequired={true}
           />
@@ -141,7 +141,7 @@ const AddQuestionForm: React.FC<{
             placeholder="option c."
             size="md"
             classNames={{
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary',
             }}
             isRequired={true}
           />
@@ -153,7 +153,7 @@ const AddQuestionForm: React.FC<{
             placeholder="option d."
             size="md"
             classNames={{
-              inputWrapper: 'border border-gray-500',
+              inputWrapper: 'border-primary',
             }}
             isRequired={true}
           />
@@ -212,7 +212,7 @@ const AddQuestionForm: React.FC<{
           placeholder="Explainaton ..."
           // disableAutosize
           classNames={{
-            inputWrapper: 'border border-gray-500 ',
+            inputWrapper: 'border-primary ',
           }}
           maxRows={4}
           size="md"

@@ -37,7 +37,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
         isHeaderSticky
         aria-label="Dynamic content"
         classNames={{
-          wrapper: ' h-full rounded-xl bg-gray-300  p-0',
+          wrapper: ' h-full border-primary bg-gray-300  p-0',
         }}
         className="h-full  "
       >
