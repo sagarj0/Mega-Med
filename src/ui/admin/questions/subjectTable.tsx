@@ -28,11 +28,11 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
       }
     };
 
-    fetchQuestions(); // Fetch data when `subject` changes
-  }, [subject]); // Re-run effect when `subject` changes
+    fetchQuestions();
+  }, [subject]);
 
   return (
-    <div className=" h-[500px] overflow-y-auto rounde-xl ">
+    <div className=" h-[400px] overflow-y-auto rounde-xl ">
       <Table
         isHeaderSticky
         aria-label="Dynamic content"
