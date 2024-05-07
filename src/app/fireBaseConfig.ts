@@ -3,13 +3,13 @@ import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBYYmNotINRg8Xj6CTHTmw9tPRCQxuI_54',
-  authDomain: 'megamed-416710.firebaseapp.com',
-  projectId: 'megamed-416710',
-  storageBucket: 'megamed-416710.appspot.com',
-  messagingSenderId: '429480702867',
-  appId: '1:429480702867:web:0b4aebc4de858301116e66',
-  measurementId: 'G-82WG9S3FFB',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);

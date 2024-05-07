@@ -52,8 +52,7 @@ const AddQuestionForm: React.FC<{
 
       if (questionCredential.image === url) {
         const res = await axios.post(
-          `
-          http://localhost:3001/api/v1/manageQuestion/addQuestionManually`,
+          `${backUrl}/api/v1/manageQuestion/addQuestionManually`,
           questionCredential
         );
 
