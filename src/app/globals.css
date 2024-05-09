@@ -20,7 +20,7 @@
 }
 
 input[type='file']::file-selector-button {
-  padding: 2em 2em;
+  /* padding: 2em 2em; */
   border-radius: 10px;
   border: 1px solid rgb(107, 114, 128);
   /* background-color: ; */

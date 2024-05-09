@@ -48,8 +48,11 @@ const AddQuestionForm: React.FC<{
         await uploadBytes(storageRef, image);
         url = await getDownloadURL(storageRef);
         questionCredential.image = url;
+      } else {
+        questionCredential.image = '';
       }
 
+      console.log(questionCredential);
       // Send question data to backend if image is uploaded
 
       const res = await axios.post(
@@ -59,7 +62,6 @@ const AddQuestionForm: React.FC<{
 
       if (res.status === 200) {
         setLoading(false);
-        console.log(res);
         toast.success('Question added successfully');
         (e.target as HTMLFormElement).reset();
       } else {
@@ -121,7 +123,7 @@ const AddQuestionForm: React.FC<{
             className="w-20 mr-8"
           />
         </div>
-        <div className="  flex items-center  gap-10">
+        <div className="  flex lg:flex-row lg:items-center items-start flex-col-reverse gap-5 lg:gap-10">
           <div className="flex flex-col gap-3">
             <Input
               type="text"
@@ -183,7 +185,7 @@ const AddQuestionForm: React.FC<{
                 console.log(e.target.files[0]);
               }
             }}
-            className=" w-72 "
+            className=" w-72 ml-8 lg:ml-0 "
           />
         </div>
         <RadioGroup

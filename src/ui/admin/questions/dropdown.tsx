@@ -64,7 +64,7 @@ export function MultiDropdownMenu({
                   <span>{subject}</span>
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
-                  <DropdownMenuSubContent className="m-1 bg-gray-300 border-primary max-w-96 ">
+                  <DropdownMenuSubContent className="m-1 bg-gray-300 border-primary max-w-96 max-h-96 overflow-y-auto no-scrollbar ">
                     {chapters.map((chapter) => (
                       <DropdownMenuItem
                         className="hover:bg-blue-500 text-black "

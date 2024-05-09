@@ -1,7 +1,6 @@
 'use client';
-
+import React, { useEffect } from 'react';
 import { Button, Link } from '@nextui-org/react';
-import React from 'react';
 import SubjectTabs from '@/ui/admin/questions/subjectTab';
 import { IoAddCircleOutline } from 'react-icons/io5';
 
