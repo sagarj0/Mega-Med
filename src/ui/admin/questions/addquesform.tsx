@@ -37,6 +37,8 @@ const AddQuestionForm: React.FC<{
       {}
     );
 
+    console.log(questionCredential);
+
     try {
       // Upload image to firebase storage
       let url = '';
@@ -50,22 +52,20 @@ const AddQuestionForm: React.FC<{
 
       // Send question data to backend if image is uploaded
 
-      if (questionCredential.image === url) {
-        const res = await axios.post(
-          `${backUrl}/api/v1/manageQuestion/addQuestionManually`,
-          questionCredential
-        );
+      const res = await axios.post(
+        `${backUrl}/api/v1/manageQuestion/addQuestionManually`,
+        questionCredential
+      );
 
-        if (res.status === 200) {
-          setLoading(false);
-          console.log(res);
-          toast.success('Question added successfully');
-          (e.target as HTMLFormElement).reset();
-        } else {
-          setLoading(false);
-          toast.error('Failed to add question');
-          console.error('Failed to send form data');
-        }
+      if (res.status === 200) {
+        setLoading(false);
+        console.log(res);
+        toast.success('Question added successfully');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setLoading(false);
+        toast.error('Failed to add question');
+        console.error('Failed to send form data');
       }
     } catch (error) {
       setLoading(false);
@@ -121,7 +121,7 @@ const AddQuestionForm: React.FC<{
             className="w-20 mr-8"
           />
         </div>
-        <div className="flex items-center  gap-10">
+        <div className="  flex items-center  gap-10">
           <div className="flex flex-col gap-3">
             <Input
               type="text"
@@ -183,7 +183,7 @@ const AddQuestionForm: React.FC<{
                 console.log(e.target.files[0]);
               }
             }}
-            className="w-40"
+            className=" w-72 "
           />
         </div>
         <RadioGroup

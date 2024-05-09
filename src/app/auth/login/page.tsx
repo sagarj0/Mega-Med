@@ -62,7 +62,7 @@ export default function LoginPage() {
 
       <div className="flex flex-col items-center justify-center my-6">
         <Toaster />
-        <section className="flex flex-col items-center gap-6border-primary rounded-md radius px-8 py-6 m-4 w-[375px]">
+        <section className="flex flex-col items-center gap-6 border-primary rounded-md radius px-8 py-6 m-4 w-[375px]">
           <MegaMedLogo />
           <h1 className="text-center">Log in to continue</h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
@@ -76,7 +76,7 @@ export default function LoginPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0border-primary ',
+                inputWrapper: 'pb-0 border-primary ',
               }}
             />
 
@@ -103,7 +103,7 @@ export default function LoginPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0border-primary ',
+                inputWrapper: 'pb-0 border-primary ',
               }}
             />
             <Button type="submit" color="primary" radius="full">

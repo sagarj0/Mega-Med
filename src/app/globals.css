@@ -19,6 +19,15 @@
   background: #555;
 }
 
+input[type='file']::file-selector-button {
+  padding: 2em 2em;
+  border-radius: 10px;
+  border: 1px solid rgb(107, 114, 128);
+  /* background-color: ; */
+  transition: 1s;
+  color: rgb(40, 42, 47);
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -33,15 +42,23 @@
     @apply text-slate-900;
   }
 
+  .active-text {
+    @apply text-[#4a3aff];
+  }
+
   .primary-bg {
     @apply bg-[#4a3aff];
   }
 
+  .secondary-bg {
+    @apply bg-[#4a3aaa]/30;
+  }
+
   .btn-filled {
-    @apply h-11 px-4 place-content-center rounded-3xl bg-[#4a3aff] text-gray-100;
+    @apply h-11 px-4 place-content-center rounded-3xl bg-[#4a3aff] text-gray-100 hover:cursor-pointer;
   }
   .btn-empty {
-    @apply h-10 px-4 place-content-center rounded-3xl border border-slate-900  text-slate-900;
+    @apply h-11 px-4 place-content-center rounded-3xl border border-slate-900  text-slate-900 hover:cursor-pointer;
   }
 
   .border-primary {

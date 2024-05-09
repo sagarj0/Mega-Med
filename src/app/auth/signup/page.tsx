@@ -64,7 +64,7 @@ export default function SignupPage() {
 
       <div className="flex flex-col items-center justify-center mb-6">
         <Toaster />
-        <section className="flex flex-col items-center gap-6border-primary rounded-md radius px-8 py-6 m-4 w-[375px]">
+        <section className="flex flex-col items-center gap-6 border-primary rounded-md radius px-8 py-6 m-4 w-[375px]">
           <MegaMedLogo />
           <h1 className="text-center">
             Sign up to unlock your potential in medical enrance exams.
@@ -80,7 +80,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0border-primary',
+                inputWrapper: 'pb-0 border-primary',
               }}
             />
             <Input
@@ -93,7 +93,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0border-primary',
+                inputWrapper: 'pb-0 border-primary',
               }}
             />
             <Input
@@ -105,7 +105,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0border-primary',
+                inputWrapper: 'pb-0 border-primary',
               }}
             />
             <Input
@@ -131,7 +131,7 @@ export default function SignupPage() {
               classNames={{
                 base: 'h-10',
                 label: 'text-xs p-0 pb-1',
-                inputWrapper: 'pb-0border-primary',
+                inputWrapper: 'pb-0 border-primary',
               }}
             />
             <Button type="submit" color="primary" radius="full">
