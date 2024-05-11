@@ -12,6 +12,7 @@ import {
 import axios from 'axios';
 import { columns } from '@/datas/tab';
 import { backUrl } from '@/datas/variable';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const [questions, setQuestions] = useState([]);
@@ -23,6 +24,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
         const res = await axios.get(
           `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`
         );
+
         setQuestions((prevQuestions) => {
           return res.data.data.map((question: any) => {
             question.correctAnswer =
@@ -37,8 +39,16 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
             return question;
           });
         });
+
+        setLoading(false);
       } catch (error) {
         console.error('An error occurred while fetching questions:', error);
+
+        toast.error('Error occurred while fetching questions', {
+          duration: 3000,
+        });
+
+        setLoading(false);
       }
     };
 
@@ -46,21 +56,24 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   }, [subject]);
 
   return (
-    <div className=" h-[450px] overflow-y-auto rounde-xl ">
+    <div className=" h-[450px] overflow-y-auto rounde-xl  ">
+      <Toaster />
       <Table
         isHeaderSticky
         aria-label="Dynamic content"
         classNames={{
-          wrapper: ' h-full border-primary bg-gray-300  p-0',
+          wrapper: ' h-full border-primary bg-gray-300  p-0  ',
         }}
         className="h-full  "
         isStriped
-        // isCompact
-        // isVirtualized
       >
         <TableHeader columns={columns}>
           {(column) => (
-            <TableColumn key={column.key} align="center">
+            <TableColumn
+              key={column.key}
+              className="font-semibold text-base text-slate-800 "
+              align="center"
+            >
               {column.label}
             </TableColumn>
           )}
@@ -69,7 +82,9 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
           {(question) => (
             <TableRow key={question.questionId}>
               {(columnKey) => (
-                <TableCell>{getKeyValue(question, columnKey)}</TableCell>
+                <TableCell className="font-medium text-sm">
+                  {getKeyValue(question, columnKey)}
+                </TableCell>
               )}
             </TableRow>
           )}

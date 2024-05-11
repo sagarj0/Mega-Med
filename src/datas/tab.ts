@@ -31,6 +31,11 @@ const tabs = [
 
 const columns = [
   {
+    key: 'questionNo',
+    label: 'Q.No.',
+  },
+
+  {
     key: 'unit',
     label: 'Unit',
   },
