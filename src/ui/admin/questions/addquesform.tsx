@@ -93,21 +93,21 @@ const AddQuestionForm: React.FC<{
             size="md"
             classNames={{
               mainWrapper: 'w-full',
-              inputWrapper: 'border-primary ',
+              inputWrapper: 'border-primary flex-grow-0',
             }}
             className="w-24"
             isRequired={true}
           />
-          <Input
+          <Textarea
             type="text"
             name="question"
-            labelPlacement="outside-left"
             placeholder="Write Question ..."
             size="md"
             classNames={{
               mainWrapper: 'w-full',
-              inputWrapper: 'border-primary',
+              inputWrapper: 'border-primary min-h-20 ',
             }}
+            maxRows={3}
             className="w-[76%]"
             isRequired={true}
           />
@@ -240,9 +240,9 @@ const AddQuestionForm: React.FC<{
           labelPlacement="outside"
           placeholder="Explainaton ..."
           classNames={{
-            inputWrapper: 'border-primary min-h-24',
+            inputWrapper: 'border-primary min-h-20',
           }}
-          maxRows={4}
+          maxRows={3}
           size="md"
           className="max-w-xs  lg:ml-5 mt-4 "
         />
