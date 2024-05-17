@@ -35,7 +35,7 @@ export default async function CardWrapper() {
   }
 
   return (
-    <div className="w-full flex items-center justify-around">
+    <div className="w-full md:flex  grid grid-cols-2 gap-5  items-center justify-around">
       <Card title="Questions" value={totalQuestions} type="question" />
       <Card title="Admins" value={totalAdmins} type="admin" />
       <Card title="Mentors" value={totalMentors} type="mentor" />
@@ -56,7 +56,7 @@ export function Card({
   const Icon = iconMap[type];
 
   return (
-    <div className="rounded-xl bg-gray-400 p-2 w-1/5 shadow-md">
+    <div className="rounded-xl bg-gray-400 p-2  md:w-1/5 shadow-md">
       <div className="flex p-4">
         {Icon ? <Icon className="h-4 w-4 text-gray-800" /> : null}
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
