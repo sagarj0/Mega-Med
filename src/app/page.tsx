@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button, Link } from '@nextui-org/react';
-import Navbar from '@/ui/home-page/navbar';
 import Image from 'next/image';
 import { FiMenu } from 'react-icons/fi';
 

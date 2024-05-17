@@ -44,6 +44,7 @@ const AddQuestionForm: React.FC<{
       let url = '';
 
       if (image) {
+        console.log(image);
         const storageRef = ref(uploadImage, `Questions/${v4()}`);
         await uploadBytes(storageRef, image);
         url = await getDownloadURL(storageRef);
