@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import useSWR from 'swr';
+import axios from 'axios';
 import {
   Table,
   TableHeader,
@@ -7,90 +9,89 @@ import {
   TableRow,
   TableCell,
   getKeyValue,
-  Spinner,
 } from '@nextui-org/react';
-import axios from 'axios';
-import { columns } from '@/datas/tab';
-import { backUrl } from '@/datas/variable';
 import toast, { Toaster } from 'react-hot-toast';
+import { columns } from '@/datas/tab';
+import { backUrl, localBackUrl } from '@/datas/variable';
+import { QuestionsData, Question } from '@/lib/types';
+
+const fetcher = (url: string): Promise<QuestionsData> =>
+  axios.get(url).then((res) => res.data.data);
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
-  const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { data, error } = useSWR<QuestionsData>(
+    `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`,
+    fetcher
+  );
 
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const res = await axios.get(
-          `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`
-        );
+  if (error) {
+    toast.error('Error occurred while fetching questions', { duration: 3000 });
+  }
 
-        setQuestions((prevQuestions) => {
-          return res.data.data.map((question: any) => {
-            question.correctAnswer =
-              question.correctAnswer === 'a'
-                ? question.optionA
-                : question.correctAnswer === 'b'
-                ? question.optionB
-                : question.correctAnswer === 'c'
-                ? question.optionC
-                : question.optionD;
+  const questionsData =
+    data?.questions.map((question) => {
+      question.correctAnswer =
+        question.correctAnswer === 'a'
+          ? question.optionA
+          : question.correctAnswer === 'b'
+          ? question.optionB
+          : question.correctAnswer === 'c'
+          ? question.optionC
+          : question.optionD;
+      return question;
+    }) || [];
 
-            return question;
-          });
-        });
-
-        setLoading(false);
-      } catch (error) {
-        console.error('An error occurred while fetching questions:', error);
-
-        toast.error('Error occurred while fetching questions', {
-          duration: 3000,
-        });
-
-        setLoading(false);
-      }
-    };
-
-    fetchQuestions();
-  }, [subject]);
+  const questionCount = data?.questionCount || 0;
 
   return (
-    <div className=" h-[450px] overflow-y-auto rounde-xl  ">
-      <Toaster />
-      <Table
-        isHeaderSticky
-        aria-label="Dynamic content"
-        classNames={{
-          wrapper: ' h-full border-primary bg-gray-300  p-0  ',
-        }}
-        className="h-full  "
-        isStriped
-      >
-        <TableHeader columns={columns}>
-          {(column) => (
-            <TableColumn
-              key={column.key}
-              className="font-semibold text-base text-slate-800 "
-              align="center"
-            >
-              {column.label}
-            </TableColumn>
-          )}
-        </TableHeader>
-        <TableBody items={questions as { questionId: string }[]}>
-          {(question) => (
-            <TableRow key={question.questionId}>
-              {(columnKey) => (
-                <TableCell className="font-medium text-sm">
-                  {getKeyValue(question, columnKey)}
-                </TableCell>
-              )}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </div>
+    <>
+      <div className="relative h-[450px] overflow-y-auto rounded-xl">
+        <p className=" hidden z-50 absolute top-[8.75px] md:flex md:flex-row flex-col items-center right-5">
+          <span className="hidden md:block">Total:</span>
+          <span className=" font-semibold active-text">/{questionCount}</span>
+        </p>
+
+        <p className=" md:hidden z-50 absolute top-[8.75px]  left-8">
+          <span className=" font-semibold active-text">/{questionCount}</span>
+        </p>
+
+        <Toaster />
+        <Table
+          isHeaderSticky
+          aria-label="Dynamic content"
+          classNames={{
+            wrapper: 'h-full border-primary bg-gray-300 p-0',
+            th: 'text-left',
+            td: 'md:text-justify md:max-w-[500px] text-wrap ',
+          }}
+          className="h-full"
+          isStriped
+        >
+          <TableHeader>
+            {columns.map((column) => (
+              <TableColumn
+                key={column.key}
+                className="font-semibold text-base text-slate-800"
+                align="center"
+              >
+                {column.label}
+              </TableColumn>
+            ))}
+          </TableHeader>
+          <TableBody items={questionsData as Question[]}>
+            {(question: Question) => (
+              <TableRow key={question.questionId}>
+                {(columnKey) => (
+                  <TableCell className="font-medium text-sm">
+                    {getKeyValue(question, columnKey)}
+                  </TableCell>
+                )}
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+    </>
   );
 };
 
