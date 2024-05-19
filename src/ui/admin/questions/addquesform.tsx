@@ -80,11 +80,11 @@ const AddQuestionForm: React.FC<{
   return (
     <form
       onSubmit={handleSubmition}
-      className="flex flex-col min-h-fit h-full  w-full bg-gray-300 border-primary  pl-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
+      className="flex flex-col min-h-fit h-full  w-full bg-gray-300 border-primary  px-6 py-8 lg:flex-row items-stretch lg:justify-between gap-10 "
     >
       <Toaster />
       <div className=" w-full lg:w-3/5 min-h-[400px] max-h-[800px] flex flex-col items-stretch lg:justify-between gap-5">
-        <div className=" w-full flex flex-row lg:justify-between lg:gap-2">
+        <div className=" w-full flex flex-col md:flex-row lg:justify-between gap-2 lg:gap-2">
           <Input
             type="text"
             name="questionNo"
@@ -96,7 +96,7 @@ const AddQuestionForm: React.FC<{
               mainWrapper: 'w-full',
               inputWrapper: 'border-primary flex-grow-0',
             }}
-            className="w-24"
+            className="w-20"
             isRequired={true}
           />
           <Textarea
@@ -105,11 +105,13 @@ const AddQuestionForm: React.FC<{
             placeholder="Write Question ..."
             size="md"
             classNames={{
+              base: 'w-full md:w-3/4',
               mainWrapper: 'w-full',
-              inputWrapper: 'border-primary min-h-20 ',
+              inputWrapper: 'w-full border-primary min-h-20 ',
             }}
+            // className="w-full"
             maxRows={3}
-            className="w-[76%]"
+            // className="w-[76%]"
             isRequired={true}
           />
           <Input
