@@ -21,7 +21,8 @@ const fetcher = (url: string): Promise<QuestionsData> =>
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const { data, error } = useSWR<QuestionsData>(
     `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`,
-    fetcher
+    fetcher,
+    { refreshInterval: 30000 }
   );
 
   if (error) {
@@ -45,6 +46,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
 
   return (
     <>
+      <Toaster />
       <div className="relative h-[450px] overflow-y-auto rounded-xl">
         <p className=" hidden z-50 absolute top-[8.75px] md:flex md:flex-row flex-col items-center right-5">
           <span className="hidden md:block">Total:</span>
@@ -55,7 +57,6 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
           <span className=" font-semibold active-text">/{questionCount}</span>
         </p>
 
-        <Toaster />
         <Table
           isHeaderSticky
           aria-label="Dynamic content"
