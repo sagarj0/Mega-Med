@@ -1,6 +1,6 @@
 import CardWrapper from '@/ui/admin/Cards';
 import { Suspense } from 'react';
-import { CardsSkeleton } from '@/ui/admin/skeleton';
+import { CardsSkeleton } from '@/ui/skeleton.tsx/cardSkeleton';
 
 export default function Page() {
   return (

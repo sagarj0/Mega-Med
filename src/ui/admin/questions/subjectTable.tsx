@@ -9,17 +9,19 @@ import {
   TableRow,
   TableCell,
   getKeyValue,
+  Spinner,
 } from '@nextui-org/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
 import { backUrl, localBackUrl } from '@/datas/variable';
 import { QuestionsData, Question } from '@/lib/types';
+import TableSkeleton from '@/ui/skeleton.tsx/tableSkeleton';
 
 const fetcher = (url: string): Promise<QuestionsData> =>
   axios.get(url).then((res) => res.data.data);
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
-  const { data, error } = useSWR<QuestionsData>(
+  const { data, error, isValidating } = useSWR<QuestionsData>(
     `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`,
     fetcher,
     { refreshInterval: 30000 }
@@ -79,16 +81,29 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
               </TableColumn>
             ))}
           </TableHeader>
-          <TableBody items={questionsData as Question[]}>
-            {(question: Question) => (
-              <TableRow key={question.questionId}>
-                {(columnKey) => (
-                  <TableCell className="font-medium text-sm sentence-case ">
-                    {getKeyValue(question, columnKey)}
-                  </TableCell>
+          <TableBody
+            items={questionsData as Question[]}
+            emptyContent={
+              <Spinner
+                label={`Loading ${subject} Questions `}
+                size="lg"
+                classNames={{
+                  label: 'text-sm font-semibold text-slate-800',
+                }}
+              />
+            }
+          >
+            {isValidating
+              ? []
+              : (question: Question) => (
+                  <TableRow key={question.questionId}>
+                    {(columnKey) => (
+                      <TableCell className="font-medium text-sm sentence-case ">
+                        {getKeyValue(question, columnKey)}
+                      </TableCell>
+                    )}
+                  </TableRow>
                 )}
-              </TableRow>
-            )}
           </TableBody>
         </Table>
       </div>

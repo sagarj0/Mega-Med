@@ -7,7 +7,7 @@ import { FaPeopleArrows, FaRegUser } from 'react-icons/fa';
 import { RiAdminLine } from 'react-icons/ri';
 import axios from 'axios';
 import { backUrl } from '@/datas/variable';
-import { CardsSkeleton } from '@/ui/admin/skeleton'; // Ensure this import is correct
+import { CardsSkeleton } from '@/ui/skeleton.tsx/cardSkeleton'; // Ensure this import is correct
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data.data);
 
@@ -34,11 +34,9 @@ export default function CardWrapperClient() {
     fetcher,
     { refreshInterval: 60000 * 30 }
   );
-  const { data: totalUsers, error: userError } = useSWR(
-    `${backUrl}/api/v1/user/count`,
-    fetcher,
-    { refreshInterval: 60000 * 30 }
-  );
+  const { data: totalUsers, error: userError } = useSWR(`${backUrl}/api/v1/user/count`, fetcher, {
+    refreshInterval: 60000 * 30,
+  });
 
   if (questionError || adminError || mentorError || userError) {
     console.error(questionError || adminError || mentorError || userError);
@@ -76,9 +74,7 @@ function Card({
         {Icon ? <Icon className="h-4 w-4 text-gray-800" /> : null}
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
       </div>
-      <p className="truncate rounded-xl bg-white px-5 py-8 text-center text-2xl">
-        {value}
-      </p>
+      <p className="truncate rounded-xl bg-white px-5 py-8 text-center text-2xl">{value}</p>
     </div>
   );
 }
