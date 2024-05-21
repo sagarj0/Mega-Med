@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev  -p 8000",
+    "dev": "next dev --turbo -p 8000",
     "build": "next build",
     "start": "next start -p 5000",
     "lint": "next lint"
@@ -30,6 +30,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/katex": "^0.16.7",
     "@types/node": "^20",
     "@types/react": "18.2.64",
     "@types/react-draft-wysiwyg": "^1.13.8",

@@ -64,6 +64,13 @@ input[type='file']::file-selector-button {
   .border-primary {
     @apply border border-gray-500   rounded-xl;
   }
+
+  /* .sentence-case::first-letter {
+    @apply uppercase;
+  }
+  .sentence-case {
+    @apply lowercase;
+  } */
 }
 
 /*next-ui bg color end*/

@@ -1,13 +1,6 @@
 'use client';
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import {
-  Input,
-  Textarea,
-  Button,
-  RadioGroup,
-  Radio,
-  CircularProgress,
-} from '@nextui-org/react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Input, Textarea, Button, RadioGroup, Radio, CircularProgress } from '@nextui-org/react';
 import { IoSendSharp } from 'react-icons/io5';
 import { MultiDropdownMenu } from './dropdown';
 import axios from 'axios';
@@ -22,6 +15,11 @@ const AddQuestionForm: React.FC<{
 }> = ({ setBreadCrumbVal }) => {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<File | null>(null);
+  const [value, setValue] = useState<string>('');
+
+  useEffect(() => {
+    console.log('value', value);
+  }, [value]);
 
   const handleSubmition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,7 +51,6 @@ const AddQuestionForm: React.FC<{
         questionCredential.image = '';
       }
 
-      console.log(questionCredential);
       // Send question data to backend if image is uploaded
 
       const res = await axios.post(

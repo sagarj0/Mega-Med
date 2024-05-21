@@ -83,7 +83,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
             {(question: Question) => (
               <TableRow key={question.questionId}>
                 {(columnKey) => (
-                  <TableCell className="font-medium text-sm">
+                  <TableCell className="font-medium text-sm sentence-case ">
                     {getKeyValue(question, columnKey)}
                   </TableCell>
                 )}

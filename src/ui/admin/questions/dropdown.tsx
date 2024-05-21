@@ -44,45 +44,38 @@ export function MultiDropdownMenu({
             input: 'hover:cursor-pointer',
           }}
           isRequired={true}
-          // isReadOnly={true}
           value={value}
-          // onValueChange={setValue}
           endContent={<BsChevronDoubleDown />}
           className="mb-3"
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80 h-64 overflow-y-auto bg-gray-300 border-primary no-scrollbar -mt-0.5">
-        <DropdownMenuGroup>
-          {subjects.map((subject) => {
-            const chapters = subjectData[subject];
-            return (
-              <DropdownMenuSub key={subject}>
-                <DropdownMenuSubTrigger
-                  className="hover:bg-blue-500"
-                  key={subject}
-                >
-                  <span>{subject}</span>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent className="m-1 absolute md:static  top-0  -left-44   w-fit text-nowrap bg-gray-300 border-primary max-w-96 max-h-96 overflow-y-auto no-scrollbar ">
-                    {chapters.map((chapter) => (
-                      <DropdownMenuItem
-                        className="hover:bg-blue-500 text-black "
-                        key={`${subject}/${chapter}`}
-                        onSelect={(e) => {
-                          // console.log(e);
-                          setValue(`${subject}/${chapter}`);
-                        }}
-                      >
-                        <span>{chapter}</span>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-            );
-          })}
-        </DropdownMenuGroup>
+        {subjects.map((subject) => {
+          const chapters = subjectData[subject];
+          return (
+            <DropdownMenuSub key={subject}>
+              <DropdownMenuSubTrigger
+                className="hover:bg-blue-500 data-[state='open']:bg-blue-500 "
+                key={subject}
+              >
+                <span>{subject}</span>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="m-1 absolute md:static  -top-10  -left-44  w-fit text-nowrap bg-gray-300 border-primary max-w-96 md:max-h-96 max-h-64 overflow-y-auto no-scrollbar ">
+                {chapters.map((chapter) => (
+                  <DropdownMenuItem
+                    className="hover:bg-blue-500 text-black "
+                    key={`${subject}/${chapter}`}
+                    onSelect={(e) => {
+                      setValue(`${subject}/${chapter}`);
+                    }}
+                  >
+                    <span>{chapter}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+          );
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   );
