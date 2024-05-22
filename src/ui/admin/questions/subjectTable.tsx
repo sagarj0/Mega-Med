@@ -24,7 +24,11 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const { data, error, isValidating } = useSWR<QuestionsData>(
     `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`,
     fetcher,
-    { refreshInterval: 30000 }
+    {
+      refreshInterval: 5 * 60 * 1000, // 5 min
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
   );
 
   if (error) {
