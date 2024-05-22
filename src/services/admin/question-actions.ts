@@ -30,6 +30,7 @@ export const handleQuestionSubmit = async ({ e, setLoading, toast }: Props) => {
     bImage: formData.get('bImage') as File,
     cImage: formData.get('cImage') as File,
     dImage: formData.get('dImage') as File,
+    eImage: formData.get('eImage') as File,
   };
 
   try {

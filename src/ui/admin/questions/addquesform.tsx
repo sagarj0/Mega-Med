@@ -68,7 +68,7 @@ const AddQuestionForm: React.FC<{
           <input type="file" name="qImage" className=" w-72 ml-8 " />
         </section>
         <section className="flex w-full items-center justify-between">
-          <div className="grid grid-rows-4 w-1/2  gap-3">
+          <div className="grid grid-rows-4 w-3/5  gap-3">
             <Input
               type="text"
               name="optionA"
@@ -118,7 +118,7 @@ const AddQuestionForm: React.FC<{
               isRequired={true}
             />
           </div>
-          <div className="grid grid-rows-4 w-1/2  items-end  gap-5">
+          <div className="grid grid-rows-4 w-2/5  items-end  gap-5">
             <input type="file" name="aImage" className=" w-full  " />
             <input type="file" name="bImage" className=" w-full  " />
             <input type="file" name="cImage" className=" w-full  " />
@@ -183,6 +183,7 @@ const AddQuestionForm: React.FC<{
           size="md"
           className="max-w-xs  lg:ml-5 mt-4 "
         />
+        <input type="file" name="eImage" className=" w-full lg:ml-5  " />
       </div>
       <div className=" w-full lg:w-2/5 xl:min-h-[400px] xl:max-h-[800px]  flex flex-col items-start lg:justify-between gap-5 ">
         <MultiDropdownMenu setBreadCrumbVal={setBreadCrumbVal} />
