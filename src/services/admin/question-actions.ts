@@ -35,10 +35,9 @@ export const handleQuestionSubmit = async ({ e, setLoading, toast }: Props) => {
 
   try {
     const uploadPromises = Object.entries(images).map(async ([key, image]: [string, File]) => {
-      if (!image.type.startsWith('image')) {
-        throw new Error('Invalid image type');
-      }
-      if (image && image.type.startsWith('image')) {
+      if (image) {
+        if (!image.type.startsWith('image'))
+          throw new Error('Invalid file type. Please upload image file only');
         const storageRef = ref(uploadImage, `Questions/${v4()}`);
         await uploadBytes(storageRef, image);
         const downloadURL = await getDownloadURL(storageRef);
