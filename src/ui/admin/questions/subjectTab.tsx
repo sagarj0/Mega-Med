@@ -17,7 +17,6 @@ export default function SubjectTabs() {
         classNames={{
           tabList:
             'w-3/4 p-0  gap-0  m-auto rounded-t-lg rounded-b-none border-gray-500 border-x border-t  ',
-          // panel: 'rounded-none ',
           tab: 'py-5 self-stretch border-x border-gray-500 rounded-none  ',
           tabContent: 'text-slate-800 font-medium  text-sm ',
           cursor: 'h-full rounded-none group-data-[selected=true]:primary-bg ',

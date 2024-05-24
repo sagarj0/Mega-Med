@@ -6,7 +6,6 @@ import { FaFileCircleQuestion } from 'react-icons/fa6';
 import { RiAdminLine } from 'react-icons/ri';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import path from 'path';
 
 const links = [
   { href: '/admin', label: 'Home', icon: FaHome },
@@ -36,12 +35,10 @@ export default function NavLinks() {
           key={label}
           href={href}
           className={clsx(
-            'flex h-[48px] grow items-center justify-center gap-2 rounded-md  p-3 text-sm font-medium hover:secondary-bg hover:active-text md:flex-none md:justify-start md:p-2 md:px-3',
+            'hover:secondary-bg hover:active-text flex h-[48px] grow items-center justify-center  gap-2 rounded-md p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3',
             {
-              'secondary-bg  active-text ':
-                href === pathName ||
-                (href !== '/admin' && pathName.includes(href)),
-            }
+              'secondary-bg  active-text ': href === pathName || (href !== '/admin' && pathName.includes(href)),
+            },
           )}
         >
           <Icon className="w-6 " />

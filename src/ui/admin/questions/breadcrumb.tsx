@@ -2,7 +2,6 @@ import React from 'react';
 import { Breadcrumbs, BreadcrumbItem } from '@nextui-org/react';
 
 const BreadCrumb: React.FC<{ breadCrumbVal: string }> = ({ breadCrumbVal }) => {
-  // console.log('breadCrumbVal', breadCrumbVal);
   const breadCrumbItems = breadCrumbVal.split('/');
 
   return (

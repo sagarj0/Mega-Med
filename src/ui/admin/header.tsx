@@ -1,6 +1,5 @@
 'use client';
-import react from 'react';
-
+import React from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
@@ -8,28 +7,28 @@ export default function Header() {
 
   if (path === '/admin') {
     return (
-      <div className="bg-gray-300 border-primary p-4 flex flex-row items-center justify-between w-full">
+      <div className="flex w-full flex-row items-center justify-between border-primary bg-gray-300 p-4">
         <h1 className="bold text-2xl">Dashboard</h1>
         <p>Admin Profile</p>
       </div>
     );
   } else if (path.includes('/admin/manage/admins')) {
     return (
-      <div className="bg-gray-300 border-primary p-4 flex flex-row items-center justify-between w-full">
+      <div className="flex w-full flex-row items-center justify-between border-primary bg-gray-300 p-4">
         <h1 className="bold text-2xl">Admins</h1>
         <p>Admin Profile</p>
       </div>
     );
   } else if (path.includes('/admin/manage/mentors')) {
     return (
-      <div className="bg-gray-300 border-primary p-4 flex flex-row items-center justify-between w-full">
+      <div className="flex w-full flex-row items-center justify-between border-primary bg-gray-300 p-4">
         <h1 className="bold text-2xl">Mentors</h1>
         <p>Admin Profile</p>
       </div>
     );
   } else if (path.includes('/admin/manage/questions')) {
     return (
-      <div className="bg-gray-300 border-primary p-4 flex flex-row items-center justify-between w-full">
+      <div className="flex w-full flex-row items-center justify-between border-primary bg-gray-300 p-4">
         <h1 className="bold text-2xl">Questions</h1>
         <p>Admin Profile</p>
       </div>

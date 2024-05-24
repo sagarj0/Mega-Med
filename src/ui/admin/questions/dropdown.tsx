@@ -3,12 +3,7 @@ import { Input } from '@nextui-org/react';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -18,11 +13,11 @@ import { subjects } from '@/datas/subjects';
 import { subjectData } from '@/datas/subjects';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 
-export function MultiDropdownMenu({
-  setBreadCrumbVal,
-}: {
+interface Props {
   setBreadCrumbVal: Dispatch<SetStateAction<string>>;
-}) {
+}
+
+export function MultiDropdownMenu({ setBreadCrumbVal }: Props) {
   const [value, setValue] = useState('');
   const breadCrumbVal = value;
 
@@ -49,21 +44,18 @@ export function MultiDropdownMenu({
           className="mb-3"
         />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80 h-64 overflow-y-auto bg-gray-300 border-primary no-scrollbar -mt-0.5">
+      <DropdownMenuContent className="no-scrollbar -mt-0.5 h-64 w-80 overflow-y-auto border-primary bg-gray-300">
         {subjects.map((subject) => {
           const chapters = subjectData[subject];
           return (
             <DropdownMenuSub key={subject}>
-              <DropdownMenuSubTrigger
-                className="hover:bg-blue-500 data-[state='open']:bg-blue-500 "
-                key={subject}
-              >
+              <DropdownMenuSubTrigger className="hover:bg-blue-500 data-[state='open']:bg-blue-500 " key={subject}>
                 <span>{subject}</span>
               </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="m-1 absolute md:static  -top-10  -left-44  w-fit text-nowrap bg-gray-300 border-primary max-w-96 md:max-h-96 max-h-64 overflow-y-auto no-scrollbar ">
+              <DropdownMenuSubContent className="no-scrollbar absolute -left-44  -top-10  m-1  max-h-64  w-fit max-w-96 overflow-y-auto text-nowrap border-primary bg-gray-300 md:static md:max-h-96 ">
                 {chapters.map((chapter) => (
                   <DropdownMenuItem
-                    className="hover:bg-blue-500 text-black "
+                    className="text-black hover:bg-blue-500 "
                     key={`${subject}/${chapter}`}
                     onSelect={(e) => {
                       setValue(`${subject}/${chapter}`);

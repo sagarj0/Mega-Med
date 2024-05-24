@@ -1,6 +1,4 @@
 import React from 'react';
-import useSWR from 'swr';
-import axios from 'axios';
 import {
   Table,
   TableHeader,
@@ -13,54 +11,24 @@ import {
 } from '@nextui-org/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
-import { backUrl, localBackUrl } from '@/datas/variable';
-import { QuestionsData, Question } from '@/lib/types';
+import { Question } from '@/lib/types';
 import TableSkeleton from '@/ui/skeleton.tsx/tableSkeleton';
-
-const fetcher = (url: string): Promise<QuestionsData> =>
-  axios.get(url).then((res) => res.data.data);
+import { useQuestions } from '@/services/admin/question-actions';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
-  const { data, error, isValidating } = useSWR<QuestionsData>(
-    `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`,
-    fetcher,
-    {
-      refreshInterval: 5 * 60 * 1000, // 5 min
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
-  );
-
-  if (error) {
-    toast.error('Error occurred while fetching questions', { duration: 3000 });
-  }
-
-  const questionsData =
-    data?.questions.map((question) => {
-      question.correctAnswer =
-        question.correctAnswer === 'a'
-          ? question.optionA
-          : question.correctAnswer === 'b'
-          ? question.optionB
-          : question.correctAnswer === 'c'
-          ? question.optionC
-          : question.optionD;
-      return question;
-    }) || [];
-
-  const questionCount = data?.questionCount || 0;
+  const { questionsData, questionCount, isValidating } = useQuestions(subject);
 
   return (
     <>
       <Toaster />
       <div className="relative h-[450px] overflow-y-auto rounded-xl">
-        <p className=" hidden z-50 absolute top-[8.75px] md:flex md:flex-row flex-col items-center right-5">
+        <p className=" absolute right-5 top-[8.75px] z-50 hidden flex-col items-center md:flex md:flex-row">
           <span className="hidden md:block">Total:</span>
-          <span className=" font-semibold active-text">/{questionCount}</span>
+          <span className=" active-text font-semibold">/{questionCount}</span>
         </p>
 
-        <p className=" md:hidden z-50 absolute top-[8.75px]  left-8">
-          <span className=" font-semibold active-text">/{questionCount}</span>
+        <p className=" absolute left-8 top-[8.75px] z-50  md:hidden">
+          <span className=" active-text font-semibold">/{questionCount}</span>
         </p>
 
         <Table
@@ -76,11 +44,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
         >
           <TableHeader>
             {columns.map((column) => (
-              <TableColumn
-                key={column.key}
-                className="font-semibold text-base text-slate-800"
-                align="center"
-              >
+              <TableColumn key={column.key} className="text-base font-semibold text-slate-800" align="center">
                 {column.label}
               </TableColumn>
             ))}
@@ -102,7 +66,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
               : (question: Question) => (
                   <TableRow key={question.questionId}>
                     {(columnKey) => (
-                      <TableCell className="font-medium text-sm sentence-case ">
+                      <TableCell className="sentence-case text-sm font-medium ">
                         {getKeyValue(question, columnKey)}
                       </TableCell>
                     )}
