@@ -66,7 +66,9 @@ export const handleQuestionSubmit = async ({ e, setLoading, toast }: Props) => {
   }
 };
 
-export const usePageCount = (subject: string, size: number) => {
+export const usePageCount = (subject: string) => {
+  const [size, setSize] = useState(30);
+
   const { data, error } = useSWR<QuestionPage>(
     `${backUrl}/api/v1/manageQuestion/totalPage/${subject}?size=${size}`,
     fetcher,
@@ -75,20 +77,23 @@ export const usePageCount = (subject: string, size: number) => {
     },
   );
 
-  useEffect(() => {
-    if (error) {
-      toast.error('Error occurred while fetching question count', { duration: 3000 });
-    }
-  }, [error]);
+  if (error) {
+    toast.error('Error occurred while fetching question count', { duration: 3000 });
+  }
 
   return {
     totalPages: data?.totalPage || 0,
+    size,
+    setSize,
   };
 };
 
-export const useQuestions = (subject: string) => {
+export const useQuestions = (subject: string, size: number) => {
   const [page, setPage] = useState(1);
-  const [size, setSize] = useState(30);
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
 
   const { data, error, isValidating } = useSWR<QuestionsData>(
     `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}?page=${page}&size=${size}`,
@@ -100,23 +105,17 @@ export const useQuestions = (subject: string) => {
     },
   );
 
-  useEffect(() => {
-    if (error) {
-      toast.error('Error occurred while fetching questions', { duration: 3000 });
-    }
-  }, [error]);
+  if (error) {
+    toast.error('Error occurred while fetching questions', { duration: 3000 });
+  }
 
   const questionCount = data?.totalQuestions || 0;
   const currentPage = data?.currentPage || 0;
 
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
-
-  const changePageSize = (newSize: number) => {
-    setSize(newSize);
-    setPage(1);
-  };
+  // const changePageSize = (newSize: number) => {
+  //   setSize(newSize);
+  //   setPage(1);
+  // };
 
   const questionsData =
     data?.questions.map((question) => {
@@ -139,7 +138,7 @@ export const useQuestions = (subject: string) => {
     size,
     currentPage,
     handlePageChange,
-    changePageSize,
-    setSize,
+    // changePageSize,
+    // setSize,
   };
 };
