@@ -13,13 +13,13 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
 import { Question } from '@/lib/types';
-import TableSkeleton from '@/ui/skeleton.tsx/tableSkeleton';
-import { useQuestions } from '@/services/admin/question-actions';
+import TableSkeleton from '@/ui/skeletons/tableSkeleton';
+import { useQuestions, usePageCount } from '@/services/admin/question-actions';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
-  const { questionsData, questionCount, isValidating, handlePageChange, page, size } = useQuestions(subject);
+  const { questionsData, questionCount, isValidating, handlePageChange, page, size, setSize } = useQuestions(subject);
 
-  const totalPages = Math.ceil(questionCount / 30);
+  const { totalPages } = usePageCount(subject, size);
 
   return (
     <>
@@ -46,17 +46,17 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
           }}
           bottomContentPlacement="outside"
           bottomContent={
-            <div className="flex w-full justify-center">
+            <div className="flex w-full items-center justify-center">
               <Pagination
                 isCompact
                 showControls
-                showShadow
                 color="primary"
                 page={page}
                 initialPage={1}
                 total={totalPages}
                 onChange={handlePageChange}
               />
+              <span className="mx-2 text-sm font-bold "> {size} question / page </span>
             </div>
           }
         >

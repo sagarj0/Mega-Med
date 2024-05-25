@@ -6,7 +6,8 @@ import { uploadImage } from '@/firebase/fireBaseConfig';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 import useSWR from 'swr';
-import { QuestionsData, Question } from '@/lib/types';
+import { QuestionsData, QuestionPage } from '@/lib/types';
+import { fetcher } from '@/lib/fetcher';
 
 interface Props {
   e: React.FormEvent<HTMLFormElement>;
@@ -65,7 +66,25 @@ export const handleQuestionSubmit = async ({ e, setLoading, toast }: Props) => {
   }
 };
 
-const fetcher = (url: string): Promise<QuestionsData> => axios.get(url).then((res) => res.data.data);
+export const usePageCount = (subject: string, size: number) => {
+  const { data, error } = useSWR<QuestionPage>(
+    `${backUrl}/api/v1/manageQuestion/totalPage/${subject}?size=${size}`,
+    fetcher,
+    {
+      refreshInterval: 60 * 60 * 1000,
+    },
+  );
+
+  useEffect(() => {
+    if (error) {
+      toast.error('Error occurred while fetching question count', { duration: 3000 });
+    }
+  }, [error]);
+
+  return {
+    totalPages: data?.totalPage || 0,
+  };
+};
 
 export const useQuestions = (subject: string) => {
   const [page, setPage] = useState(1);
@@ -75,7 +94,7 @@ export const useQuestions = (subject: string) => {
     `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}?page=${page}&size=${size}`,
     fetcher,
     {
-      refreshInterval: 5 * 60 * 1000, // 5 min
+      refreshInterval: 10 * 60 * 1000, // 5 min
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
     },
@@ -86,6 +105,18 @@ export const useQuestions = (subject: string) => {
       toast.error('Error occurred while fetching questions', { duration: 3000 });
     }
   }, [error]);
+
+  const questionCount = data?.totalQuestions || 0;
+  const currentPage = data?.currentPage || 0;
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const changePageSize = (newSize: number) => {
+    setSize(newSize);
+    setPage(1);
+  };
 
   const questionsData =
     data?.questions.map((question) => {
@@ -100,29 +131,15 @@ export const useQuestions = (subject: string) => {
       return question;
     }) || [];
 
-  const questionCount = data?.totalQuestions || 0;
-  // const totalPages = Math.ceil(questionCount / size);
-  const currentPage = data?.currentPage || 0;
-
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
-
-  const changePageSize = (newSize: number) => {
-    setSize(newSize);
-    setPage(1); // Reset to first page when changing page size
-  };
-
   return {
     questionsData,
     questionCount,
     isValidating,
     page,
     size,
-    // totalPages,
     currentPage,
     handlePageChange,
-
     changePageSize,
+    setSize,
   };
 };

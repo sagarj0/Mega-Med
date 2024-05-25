@@ -1,9 +1,7 @@
 // hooks/useCardData.ts
 import useSWR from 'swr';
-import axios from 'axios';
 import { backUrl } from '@/datas/variable';
-
-const fetcher = (url: string) => axios.get(url).then((res) => res.data.data);
+import { fetcher } from '@/lib/fetcher';
 
 const useCardData = () => {
   const { data: totalQuestions, error: questionError } = useSWR(`${backUrl}/api/v1/manageQuestion/count`, fetcher, {

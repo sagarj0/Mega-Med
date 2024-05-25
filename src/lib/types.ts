@@ -27,3 +27,7 @@ export interface QuestionsData {
   totalPages: number;
   currentPage: number;
 }
+
+export interface QuestionPage {
+  totalPage: number;
+}

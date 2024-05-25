@@ -6,7 +6,7 @@ import { FaFileCircleQuestion } from 'react-icons/fa6';
 import { FaPeopleArrows, FaRegUser } from 'react-icons/fa';
 import { RiAdminLine } from 'react-icons/ri';
 import useCardData from '@/services/admin/counts-action';
-import { CardsSkeleton } from '@/ui/skeleton.tsx/cardSkeleton'; // Ensure this import is correct
+import { CardsSkeleton } from '@/ui/skeletons/cardSkeleton'; // Ensure this import is correct
 
 const iconMap = {
   question: FaFileCircleQuestion,

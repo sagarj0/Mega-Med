@@ -56,22 +56,22 @@ input[type='file']::file-selector-button {
   }
 
   .btn-filled {
-    @apply h-11 px-4 place-content-center rounded-3xl bg-[#4a3aff] text-gray-100 hover:cursor-pointer;
+    @apply h-11 place-content-center rounded-3xl bg-[#4a3aff] px-4 text-gray-100 hover:cursor-pointer;
   }
   .btn-empty {
-    @apply h-11 px-4 place-content-center rounded-3xl border border-slate-900  text-slate-900 hover:cursor-pointer;
+    @apply h-11 place-content-center rounded-3xl border border-slate-900 px-4  text-slate-900 hover:cursor-pointer;
   }
 
   .border-primary {
-    @apply border border-gray-500   rounded-xl;
+    @apply rounded-xl border   border-gray-500;
   }
 
-  /* .sentence-case::first-letter {
+  .sentence-case::first-letter {
     @apply uppercase;
   }
   .sentence-case {
     @apply lowercase;
-  } */
+  }
 }
 
 /*next-ui bg color end*/
