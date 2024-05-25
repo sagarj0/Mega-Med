@@ -31,3 +31,19 @@ export interface QuestionsData {
 export interface QuestionPage {
   totalPage: number;
 }
+
+export interface QuestionCount {
+  totalQuestions: number;
+}
+
+export interface AdminCount {
+  totalAdmins: number;
+}
+
+export interface MentorCount {
+  totalMentors: number;
+}
+
+export interface UserCount {
+  totalUsers: number;
+}

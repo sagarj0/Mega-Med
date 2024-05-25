@@ -10,10 +10,10 @@ import {
   Spinner,
   Pagination,
 } from '@nextui-org/react';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
 import { Question } from '@/lib/types';
-import TableSkeleton from '@/ui/skeletons/tableSkeleton';
+// import TableSkeleton from '@/ui/skeletons/tableSkeleton';
 import { useQuestions, usePageCount } from '@/services/admin/question-actions';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
