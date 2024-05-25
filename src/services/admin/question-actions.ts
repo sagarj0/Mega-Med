@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { backUrl } from '@/datas/variable';
@@ -68,8 +68,11 @@ export const handleQuestionSubmit = async ({ e, setLoading, toast }: Props) => {
 const fetcher = (url: string): Promise<QuestionsData> => axios.get(url).then((res) => res.data.data);
 
 export const useQuestions = (subject: string) => {
+  const [page, setPage] = useState(1);
+  const [size, setSize] = useState(30);
+
   const { data, error, isValidating } = useSWR<QuestionsData>(
-    `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}`,
+    `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}?page=${page}&size=${size}`,
     fetcher,
     {
       refreshInterval: 5 * 60 * 1000, // 5 min
@@ -97,7 +100,29 @@ export const useQuestions = (subject: string) => {
       return question;
     }) || [];
 
-  const questionCount = data?.questionCount || 0;
+  const questionCount = data?.totalQuestions || 0;
+  // const totalPages = Math.ceil(questionCount / size);
+  const currentPage = data?.currentPage || 0;
 
-  return { questionsData, questionCount, isValidating };
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const changePageSize = (newSize: number) => {
+    setSize(newSize);
+    setPage(1); // Reset to first page when changing page size
+  };
+
+  return {
+    questionsData,
+    questionCount,
+    isValidating,
+    page,
+    size,
+    // totalPages,
+    currentPage,
+    handlePageChange,
+
+    changePageSize,
+  };
 };

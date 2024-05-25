@@ -6,13 +6,10 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 
 export default function Page() {
   return (
-    <div className=" w-full h-full flex flex-col justify-between space-y-2 ">
+    <div className=" flex h-full w-full flex-col">
       <SubjectTabs />
       <Link href="/admin/manage/questions/addQuestion">
-        <Button
-          startContent={<IoAddCircleOutline size={20} />}
-          className="btn-filled"
-        >
+        <Button startContent={<IoAddCircleOutline size={20} />} className="btn-filled">
           Add question
         </Button>
       </Link>

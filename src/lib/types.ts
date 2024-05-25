@@ -4,7 +4,12 @@ export interface Question {
   chapter: string;
   questionNo: number;
   question: string;
-  image: string;
+  qImage: string | null;
+  aImage: string | null;
+  bImage: string | null;
+  cImage: string | null;
+  dImage: string | null;
+  eImage: string | null;
   optionA: string;
   optionB: string;
   optionC: string;
@@ -18,5 +23,7 @@ export interface Question {
 
 export interface QuestionsData {
   questions: Question[];
-  questionCount: number;
+  totalQuestions: number;
+  totalPages: number;
+  currentPage: number;
 }

@@ -8,6 +8,7 @@ import {
   TableCell,
   getKeyValue,
   Spinner,
+  Pagination,
 } from '@nextui-org/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
@@ -16,12 +17,14 @@ import TableSkeleton from '@/ui/skeleton.tsx/tableSkeleton';
 import { useQuestions } from '@/services/admin/question-actions';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
-  const { questionsData, questionCount, isValidating } = useQuestions(subject);
+  const { questionsData, questionCount, isValidating, handlePageChange, page, size } = useQuestions(subject);
+
+  const totalPages = Math.ceil(questionCount / 30);
 
   return (
     <>
       <Toaster />
-      <div className="relative h-[450px] overflow-y-auto rounded-xl">
+      <div className="relative h-[530px] overflow-y-auto rounded-xl">
         <p className=" absolute right-5 top-[8.75px] z-50 hidden flex-col items-center md:flex md:flex-row">
           <span className="hidden md:block">Total:</span>
           <span className=" active-text font-semibold">/{questionCount}</span>
@@ -33,14 +36,29 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
 
         <Table
           isHeaderSticky
+          isStriped
+          isCompact
           aria-label="Dynamic content"
           classNames={{
-            wrapper: 'h-full border-primary bg-gray-300 p-0',
+            wrapper: 'h-[450px] border-primary bg-gray-400 p-0',
             th: 'text-left',
             td: 'md:text-justify md:max-w-[500px] text-wrap ',
           }}
-          className="h-full"
-          isStriped
+          bottomContentPlacement="outside"
+          bottomContent={
+            <div className="flex w-full justify-center">
+              <Pagination
+                isCompact
+                showControls
+                showShadow
+                color="primary"
+                page={page}
+                initialPage={1}
+                total={totalPages}
+                onChange={handlePageChange}
+              />
+            </div>
+          }
         >
           <TableHeader>
             {columns.map((column) => (
