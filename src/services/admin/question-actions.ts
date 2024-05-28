@@ -74,6 +74,8 @@ export const usePageCount = (subject: string) => {
     fetcher,
     {
       refreshInterval: 60 * 60 * 1000,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
     },
   );
 
@@ -106,7 +108,7 @@ export const useQuestions = (subject: string, size: number) => {
   );
 
   if (error) {
-    toast.error('Error occurred while fetching questions', { duration: 3000 });
+    toast.error('Error occurred while fetching questions');
   }
 
   const questionCount = data?.totalQuestions || 0;
