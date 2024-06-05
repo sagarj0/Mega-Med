@@ -18,8 +18,7 @@ import {
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const { totalPages, size } = usePageCount(subject);
-
-  const { questionsData, questionCount, isValidating, handlePageChange, page } = useQuestions(subject, size);
+  const { questionsData, questionCount, isFetching, handlePageChange, page } = useQuestions(subject, size);
 
   return (
     <>
@@ -79,7 +78,7 @@ const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
               />
             }
           >
-            {isValidating
+            {isFetching
               ? []
               : (question: Question) => (
                   <TableRow key={question.questionId}>

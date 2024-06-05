@@ -5,7 +5,7 @@ const BreadCrumb: React.FC<{ breadCrumbVal: string }> = ({ breadCrumbVal }) => {
   const breadCrumbItems = breadCrumbVal.split('/');
 
   return (
-    <div className="flex flex-row w-full px-4 py-2 gap-4 items-center">
+    <div className="flex w-full flex-row items-center gap-4 px-4 py-2">
       <h1 className="text-md">Questions adding to:</h1>
       <Breadcrumbs
         separator="/"

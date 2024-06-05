@@ -6,8 +6,9 @@ import { uploadImage } from '@/firebase/fireBaseConfig';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
 import useSWR from 'swr';
-import { QuestionsData, QuestionPage } from '@/lib/types';
+import { QuestionsData, QuestionPage, Question } from '@/lib/types';
 import { fetcher } from '@/lib/fetcher';
+import { processedQuestions } from '@/helper/optionMap';
 
 interface Props {
   e: React.FormEvent<HTMLFormElement>;
@@ -79,10 +80,6 @@ export const usePageCount = (subject: string) => {
     },
   );
 
-  if (error) {
-    toast.error('Error occurred while fetching question count', { duration: 3000 });
-  }
-
   return {
     totalPages: data?.totalPage || 0,
     size,
@@ -93,49 +90,37 @@ export const usePageCount = (subject: string) => {
 export const useQuestions = (subject: string, size: number) => {
   const [page, setPage] = useState(1);
 
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-  };
-
   const { data, error, isValidating } = useSWR<QuestionsData>(
     `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}?page=${page}&size=${size}`,
     fetcher,
     {
-      refreshInterval: 10 * 60 * 1000, // 5 min
+      refreshInterval: 10 * 60 * 1000,
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
     },
   );
 
-  if (error) {
-    toast.error('Error occurred while fetching questions');
-  }
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+  }, [error]);
 
   const questionCount = data?.totalQuestions || 0;
   const currentPage = data?.currentPage || 0;
+  const questionsData = processedQuestions(data?.questions!);
+
+  const handlePageChange = (newPage: number) => setPage(newPage);
 
   // const changePageSize = (newSize: number) => {
   //   setSize(newSize);
   //   setPage(1);
   // };
 
-  const questionsData =
-    data?.questions.map((question) => {
-      question.correctAnswer =
-        question.correctAnswer === 'a'
-          ? question.optionA
-          : question.correctAnswer === 'b'
-            ? question.optionB
-            : question.correctAnswer === 'c'
-              ? question.optionC
-              : question.optionD;
-      return question;
-    }) || [];
-
   return {
     questionsData,
     questionCount,
-    isValidating,
+    isFetching: isValidating,
     page,
     size,
     currentPage,

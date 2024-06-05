@@ -1,4 +1,4 @@
-export interface Question {
+export type Question = {
   questionId: string;
   unit: string;
   chapter: string;
@@ -19,26 +19,26 @@ export interface Question {
   tag: string;
   createdAt: string;
   updatedAt: string;
-}
+};
 
-export interface QuestionsData {
+export type QuestionsData = {
   questions: Question[];
   totalQuestions: number;
   totalPages: number;
   currentPage: number;
-}
+};
 
-export interface QuestionPage {
+export type QuestionPage = {
   totalPage: number;
-}
+};
 
-export interface QuestionCount {
+export type QuestionCount = {
   totalQuestions: number;
-}
+};
 
-export interface AdminCount {
+export type AdminCount = {
   totalAdmins: number;
-}
+};
 
 export interface MentorCount {
   totalMentors: number;
