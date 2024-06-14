@@ -1,4 +1,3 @@
-import { icons } from 'lucide-react';
 import { FaAtom, FaFlask, FaDna, FaMicroscope, FaBrain } from 'react-icons/fa';
 
 const tabs = [

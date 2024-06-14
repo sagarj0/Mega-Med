@@ -57,7 +57,7 @@ export function MultiDropdownMenu({ setBreadCrumbVal }: Props) {
                   <DropdownMenuItem
                     className="text-black hover:bg-blue-500 "
                     key={`${subject}/${chapter}`}
-                    onSelect={(e) => {
+                    onSelect={() => {
                       setValue(`${subject}/${chapter}`);
                     }}
                   >

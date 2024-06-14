@@ -1,71 +1,40 @@
 'use client';
 
-import react from 'react';
+import React from 'react';
 import { Input, Button } from '@nextui-org/react';
 import MegaMedLogo from '@/ui/MegaMedLogo';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import toast, { Toaster } from 'react-hot-toast';
-import { backUrl } from '@/datas/variable';
+import { Toaster } from 'react-hot-toast';
 import { FiArrowLeft } from 'react-icons/fi';
+import { handleLogin } from '@/services/auth/actions';
 
 export default function LoginPage() {
   const router = useRouter();
 
   const [isVisible, setIsVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target as HTMLFormElement);
-    const formDataArray = Array.from(formData.entries());
-
-    const loginCredential = formDataArray.reduce(
-      (acc: { [key: string]: string }, [key, value]) => {
-        acc[key] = String(value);
-        return acc;
-      },
-      {}
-    );
-
-    console.log('login detail is ', loginCredential);
-
-    try {
-      const res = await axios.post(
-        `${backUrl}/api/v1/auth/login`,
-        loginCredential
-      );
-
-      if (res.status === 200) {
-        console.log(res);
-        toast.success('Logged in Successfully');
-        (e.target as HTMLFormElement).reset();
-
-        router.push(`/${res.data.data.user.role}`);
-      }
-    } catch (error) {
-      console.error('Failed to login', error);
-      toast.error('Failed to login');
-    }
+    await handleLogin({ e, router, setLoading });
   };
 
   return (
-    <main className=" max-w-screen-2xl px-20 py-8 flex flex-col items-center justify-center h-fit">
-      <Link href="/" className=" w-full flex items-center gap-2 ">
-        <FiArrowLeft className="text-2xl cursor-pointer" />
+    <main className=" flex h-fit max-w-screen-2xl flex-col items-center justify-center px-20 py-8">
+      <Link href="/" className=" flex w-full items-center gap-2 ">
+        <FiArrowLeft className="cursor-pointer text-2xl" />
         <p>Back to home</p>
       </Link>
 
-      <div className="flex flex-col items-center justify-center my-6">
+      <div className="my-6 flex flex-col items-center justify-center">
         <Toaster />
-        <section className="flex flex-col items-center gap-6 border-primary rounded-md radius px-8 py-6 m-4 w-[375px]">
+        <section className="radius m-4 flex w-[375px] flex-col items-center gap-6 rounded-md border-primary px-8 py-6">
           <MegaMedLogo />
           <h1 className="text-center">Log in to continue</h1>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
+          <form onSubmit={handleSubmit} className="flex w-full flex-col gap-3">
             <Input
               name="email"
               type="email"
@@ -84,15 +53,9 @@ export default function LoginPage() {
               type={isVisible ? 'text' : 'password'}
               endContent={
                 isVisible ? (
-                  <FaRegEyeSlash
-                    onClick={() => setIsVisible(false)}
-                    className="cursor-pointer text-xl"
-                  />
+                  <FaRegEyeSlash onClick={() => setIsVisible(false)} className="cursor-pointer text-xl" />
                 ) : (
-                  <FaRegEye
-                    onClick={() => setIsVisible(true)}
-                    className="cursor-pointer text-xl"
-                  />
+                  <FaRegEye onClick={() => setIsVisible(true)} className="cursor-pointer text-xl" />
                 )
               }
               name="password"
@@ -106,14 +69,14 @@ export default function LoginPage() {
                 inputWrapper: 'pb-0 border-primary ',
               }}
             />
-            <Button type="submit" color="primary" radius="full">
+            <Button type="submit" color="primary" radius="full" isLoading={loading}>
               Log in
             </Button>
           </form>
-          <div className="h-2 w-full flex items-center gap-4 ">
-            <div className="h-px w-full bg-gray-500 box-border ml-2"></div>
-            <p className="text-gray-500 h-fit">OR</p>
-            <div className="h-px w-full bg-gray-500 box-border mr-2"></div>
+          <div className="flex h-2 w-full items-center gap-4 ">
+            <div className="ml-2 box-border h-px w-full bg-gray-500"></div>
+            <p className="h-fit text-gray-500">OR</p>
+            <div className="mr-2 box-border h-px w-full bg-gray-500"></div>
           </div>
           <Button
             startContent={<span>Continue with</span>}
@@ -124,10 +87,7 @@ export default function LoginPage() {
         </section>
         <section className="flex items-center justify-center  ">
           Don`t have an account?
-          <Link
-            href="/auth/signup"
-            className="text-blue-500 hover:cursor pointer hover:underline"
-          >
+          <Link href="/auth/signup" className="hover:cursor pointer text-blue-500 hover:underline">
             Signup
           </Link>
         </section>

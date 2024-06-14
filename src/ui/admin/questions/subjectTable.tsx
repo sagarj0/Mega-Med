@@ -2,7 +2,7 @@ import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
 import { Question } from '@/lib/types';
-import { useQuestions, usePageCount } from '@/services/admin/question-actions';
+import { useQuestions, usePageCount } from '@/services/admin/questions/count-action';
 import {
   Table,
   TableHeader,
@@ -14,7 +14,6 @@ import {
   Spinner,
   Pagination,
 } from '@nextui-org/react';
-// import TableSkeleton from '@/ui/skeletons/tableSkeleton';
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const { totalPages, size } = usePageCount(subject);

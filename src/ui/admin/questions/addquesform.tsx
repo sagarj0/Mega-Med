@@ -3,8 +3,8 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Input, Textarea, Button, RadioGroup, Radio } from '@nextui-org/react';
 import { IoSendSharp } from 'react-icons/io5';
 import { MultiDropdownMenu } from './dropdown';
-import toast, { Toaster } from 'react-hot-toast';
-import { handleQuestionSubmit } from '@/services/admin/question-actions';
+import { Toaster } from 'react-hot-toast';
+import { handleQuestionSubmit } from '@/services/admin/questions/question-actions';
 
 interface Props {
   setBreadCrumbVal: Dispatch<SetStateAction<string>>;
@@ -14,7 +14,7 @@ const AddQuestionForm: React.FC<Props> = ({ setBreadCrumbVal }) => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmition = async (e: React.FormEvent<HTMLFormElement>) => {
-    await handleQuestionSubmit({ e, setLoading, toast });
+    await handleQuestionSubmit({ e, setLoading });
   };
 
   return (

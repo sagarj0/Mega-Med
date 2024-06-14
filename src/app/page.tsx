@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button, Link } from '@nextui-org/react';
+import { Link } from '@nextui-org/react';
 import Image from 'next/image';
 import { FiMenu } from 'react-icons/fi';
 
