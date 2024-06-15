@@ -1,19 +1,34 @@
 'use client';
-
 import React from 'react';
 import { Link } from '@nextui-org/react';
 import Image from 'next/image';
 import { FiMenu } from 'react-icons/fi';
 
-interface NavItemProps {
-  children: React.ReactNode;
-}
+const navItems = [
+  {
+    menu: 'Home',
+    link: '/',
+  },
+  {
+    menu: 'About',
+    link: '/',
+  },
 
-const NavItem: React.FC<NavItemProps> = ({ children }) => {
-  return <div className="my-auto cursor-pointer self-stretch text-base ">{children}</div>;
-};
+  {
+    menu: 'Tests',
+    link: '/test/sub-wise',
+  },
 
-const navItems = ['Home', 'About us', 'Tests', 'Mentors', 'Contact us'];
+  {
+    menu: 'Mentors',
+    link: '/',
+  },
+
+  {
+    menu: 'Contact us',
+    link: '/',
+  },
+];
 
 function MyComponent() {
   return (
@@ -25,8 +40,12 @@ function MyComponent() {
           </div>
 
           <nav className="hidden items-center justify-between gap-5 text-lg font-semibold max-md:max-w-full max-md:flex-wrap md:flex">
-            {navItems.map((item) => (
-              <NavItem key={item}>{item}</NavItem>
+            {navItems.map((item, index) => (
+              <span key={index}>
+                <Link href={item.link} className="text-gray-800">
+                  {item.menu}
+                </Link>
+              </span>
             ))}
             <Link href="/auth/login" className=" btn-empty w-fit">
               Log in

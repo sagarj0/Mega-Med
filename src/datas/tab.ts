@@ -48,4 +48,27 @@ const columns = [
   },
 ];
 
-export { tabs, columns };
+const subjects = [
+  {
+    key: 'Physics',
+    label: 'Physics',
+  },
+  {
+    key: 'Chemistry',
+    label: 'Chemistry',
+  },
+  {
+    key: 'Botany',
+    label: 'Botany',
+  },
+  {
+    key: 'Zoology',
+    label: 'Zoology',
+  },
+  {
+    key: 'MAT',
+    label: 'MAT',
+  },
+];
+
+export { tabs, columns, subjects };
