@@ -3,9 +3,7 @@ const shimmer =
 
 export function CardSkeleton() {
   return (
-    <div
-      className={`${shimmer} relative overflow-hidden rounded-xl md:w-1/5 bg-gray-400 p-2 shadow-md`}
-    >
+    <div className={`${shimmer} relative overflow-hidden rounded-xl bg-gray-400 p-2 shadow-md md:w-1/5`}>
       <div className="flex p-4">
         <div className="h-4 w-4 rounded-md bg-gray-200" />
         <div className="ml-2 h-6 w-16 rounded-md bg-gray-200 text-sm font-medium" />
@@ -19,7 +17,7 @@ export function CardSkeleton() {
 
 export function CardsSkeleton() {
   return (
-    <div className="w-full md:flex  grid grid-cols-2 gap-5  items-center justify-around">
+    <div className="grid w-full  grid-cols-2 items-center justify-around  gap-5 md:flex">
       <CardSkeleton />
       <CardSkeleton />
       <CardSkeleton />

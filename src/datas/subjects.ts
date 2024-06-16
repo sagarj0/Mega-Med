@@ -204,10 +204,5 @@ export const subjectData: SubjectData = {
     'Human Diseases & Immunology',
   ],
 
-  MAT: [
-    'Verbal reasoning',
-    'Numerical reasoning',
-    'Logical reasoning',
-    'Abstract|Spatial reasoning',
-  ],
+  MAT: ['Verbal reasoning', 'Numerical reasoning', 'Logical reasoning', 'Abstract|Spatial reasoning'],
 };
