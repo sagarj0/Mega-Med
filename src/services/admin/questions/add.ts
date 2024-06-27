@@ -1,9 +1,9 @@
-import axios from 'axios';
 import toast from 'react-hot-toast';
-import { backUrl } from '@/datas/variable';
 import { uploadImage } from '@/firebase/fireBaseConfig';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { v4 } from 'uuid';
+import { endpoints } from './endpoints';
+import api from '@/helper/axios';
 
 interface Props {
   e: React.FormEvent<HTMLFormElement>;
@@ -37,7 +37,7 @@ export const handleQuestionSubmit = async ({ e, setLoading }: Props) => {
 
     await Promise.all(uploadPromises);
 
-    const res = await axios.post(`${backUrl}/api/v1/manageQuestion/addQuestionManually`, questionCredential);
+    const res = await api.post(endpoints.addQuestion, questionCredential);
 
     if (res.status === 200) {
       toast.success('Question added successfully');

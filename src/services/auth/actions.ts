@@ -1,8 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import toast from 'react-hot-toast';
-import { backUrl } from '@/datas/variable';
-
+import { endpoints } from './endpoints';
+import api from '@/helper/axios';
 interface FormEventProps {
   e: React.FormEvent<HTMLFormElement>;
   router: any;
@@ -19,7 +18,7 @@ const handleLogin = async ({ e, router, setLoading }: FormEventProps) => {
 
     console.log(loginCredential);
 
-    const res = await axios.post(`${backUrl}/api/v1/auth/login`, loginCredential);
+    const res = await api.post(endpoints.login, loginCredential);
 
     if (res.status === 200) {
       toast.success('Logged in Successfully');
@@ -41,7 +40,7 @@ const handleSignup = async ({ e, router, setLoading }: FormEventProps) => {
     const formData = new FormData(e.target as HTMLFormElement);
     const signupCredential = Object.fromEntries(formData); // Simplified from Array.from(formData.entries())
 
-    const res = await axios.post(`${backUrl}/api/v1/auth/register`, signupCredential);
+    const res = await api.post(endpoints.register, signupCredential);
 
     if (res.status === 201) {
       toast.success('Registered Successfully');

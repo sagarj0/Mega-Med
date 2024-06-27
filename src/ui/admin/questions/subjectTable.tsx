@@ -2,7 +2,7 @@ import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { columns } from '@/datas/tab';
 import { Question } from '@/lib/types';
-import { useQuestions, usePageCount } from '@/services/admin/questions/count-action';
+import { useFetchQuestions, usePageCount } from '@/services/admin/questions/fetch';
 import {
   Table,
   TableHeader,
@@ -17,7 +17,7 @@ import {
 
 const SubjectTable: React.FC<{ subject: string }> = ({ subject }) => {
   const { totalPages, size } = usePageCount(subject);
-  const { questionsData, questionCount, isFetching, handlePageChange, page } = useQuestions(subject, size);
+  const { questionsData, questionCount, isFetching, handlePageChange, page } = useFetchQuestions(subject, size);
 
   return (
     <>

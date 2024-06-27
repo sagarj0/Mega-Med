@@ -1,23 +1,17 @@
-// hooks/useCardData.ts
-import useSWR from 'swr';
-import { backUrl } from '@/datas/variable';
-import { fetcher } from '@/lib/fetcher';
+import api from '@/helper/axios';
+import { endpoints } from '@/services/admin/endpoints';
 
 const useCardData = () => {
-  const { data: totalQuestions, error: questionError } = useSWR<number>(
-    `${backUrl}/api/v1/manageQuestion/count`,
-    fetcher,
-    {
-      refreshInterval: 60000,
-    },
-  );
-  const { data: totalAdmins, error: adminError } = useSWR<number>(`${backUrl}/api/v1/admin/count`, fetcher, {
+  const { data: totalQuestions, error: questionError } = api.useSWR<number>(endpoints.countQuestion, {
     refreshInterval: 60000 * 30,
   });
-  const { data: totalMentors, error: mentorError } = useSWR<number>(`${backUrl}/api/v1/mentor/count`, fetcher, {
+  const { data: totalAdmins, error: adminError } = api.useSWR<number>(endpoints.countAdmin, {
     refreshInterval: 60000 * 30,
   });
-  const { data: totalUsers, error: userError } = useSWR<number>(`${backUrl}/api/v1/user/count`, fetcher, {
+  const { data: totalMentors, error: mentorError } = api.useSWR<number>(endpoints.countMentor, {
+    refreshInterval: 60000 * 30,
+  });
+  const { data: totalUsers, error: userError } = api.useSWR<number>(endpoints.countUser, {
     refreshInterval: 60000 * 30,
   });
 

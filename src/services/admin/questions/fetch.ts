@@ -1,22 +1,16 @@
 import { useEffect, useState } from 'react';
-import useSWR from 'swr';
-import { backUrl } from '@/datas/variable';
-import { fetcher } from '@/lib/fetcher';
 import { QuestionsData, QuestionPage } from '@/lib/types';
 import { processedQuestions } from '@/helper/optionMap';
 import { toast } from 'react-hot-toast';
+import { endpoints } from './endpoints';
+import api from '@/helper/axios';
 
 export const usePageCount = (subject: string) => {
   const [size, setSize] = useState(30);
-  const { data, error } = useSWR<QuestionPage>(
-    `${backUrl}/api/v1/manageQuestion/totalPage/${subject}?size=${size}`,
-    fetcher,
-    {
-      refreshInterval: 60 * 60 * 1000,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    },
-  );
+  const { data, error } = api.useSWR<QuestionPage>(endpoints.fetchTotalPage + subject + '?size=' + size, {
+    refreshInterval: 60 * 60 * 1000,
+    revalidateOnFocus: false,
+  });
 
   return {
     totalPages: data?.totalPage || 0,
@@ -26,16 +20,14 @@ export const usePageCount = (subject: string) => {
   };
 };
 
-export const useQuestions = (subject: string, size: number) => {
+export const useFetchQuestions = (subject: string, size: number) => {
   const [page, setPage] = useState(1);
 
-  const { data, error, isValidating } = useSWR<QuestionsData>(
-    `${backUrl}/api/v1/manageQuestion/getQuestions/${subject}?page=${page}&size=${size}`,
-    fetcher,
+  const { data, error, isValidating } = api.useSWR<QuestionsData>(
+    endpoints.fetchQuestions + subject + `?page=${page}&size=${size}`,
     {
       refreshInterval: 10 * 60 * 1000,
       revalidateOnFocus: false,
-      revalidateOnReconnect: false,
     },
   );
 

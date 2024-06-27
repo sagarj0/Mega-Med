@@ -4,7 +4,7 @@ import { Input, Textarea, Button, RadioGroup, Radio } from '@nextui-org/react';
 import { IoSendSharp } from 'react-icons/io5';
 import { MultiDropdownMenu } from './dropdown';
 import { Toaster } from 'react-hot-toast';
-import { handleQuestionSubmit } from '@/services/admin/questions/question-actions';
+import { handleQuestionSubmit } from '@/services/admin/questions/add';
 
 interface Props {
   setBreadCrumbVal: Dispatch<SetStateAction<string>>;

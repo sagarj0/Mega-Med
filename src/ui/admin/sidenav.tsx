@@ -1,5 +1,5 @@
 import NavLinks from '@/ui/admin/navLinks';
-import MegaMedLogo from '@/ui/MegaMedLogo';
+import MegaMedLogo from '@/components/MegaMedLogo';
 import Link from 'next/link';
 import { FaPowerOff } from 'react-icons/fa';
 
