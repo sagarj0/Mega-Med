@@ -1,19 +1,15 @@
 import api from '@/helper/axios';
 import { endpoints } from '@/services/admin/endpoints';
 
+const swrConfig = {
+  refreshInterval: 60000 * 30,
+};
+
 const useCardData = () => {
-  const { data: totalQuestions, error: questionError } = api.useSWR<number>(endpoints.countQuestion, {
-    refreshInterval: 60000 * 30,
-  });
-  const { data: totalAdmins, error: adminError } = api.useSWR<number>(endpoints.countAdmin, {
-    refreshInterval: 60000 * 30,
-  });
-  const { data: totalMentors, error: mentorError } = api.useSWR<number>(endpoints.countMentor, {
-    refreshInterval: 60000 * 30,
-  });
-  const { data: totalUsers, error: userError } = api.useSWR<number>(endpoints.countUser, {
-    refreshInterval: 60000 * 30,
-  });
+  const { data: totalQuestions, error: questionError } = api.useSWR<number>(endpoints.countQuestion, swrConfig);
+  const { data: totalAdmins, error: adminError } = api.useSWR<number>(endpoints.countAdmin, swrConfig);
+  const { data: totalMentors, error: mentorError } = api.useSWR<number>(endpoints.countMentor, swrConfig);
+  const { data: totalUsers, error: userError } = api.useSWR<number>(endpoints.countUser, swrConfig);
 
   return {
     totalQuestions,

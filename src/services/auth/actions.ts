@@ -14,7 +14,7 @@ const handleLogin = async ({ e, router, setLoading }: FormEventProps) => {
 
   try {
     const formData = new FormData(e.target as HTMLFormElement);
-    const loginCredential = Object.fromEntries(formData); // Simplified from Array.from(formData.entries())
+    const loginCredential = Object.fromEntries(formData);
 
     console.log(loginCredential);
 
@@ -38,7 +38,7 @@ const handleSignup = async ({ e, router, setLoading }: FormEventProps) => {
 
   try {
     const formData = new FormData(e.target as HTMLFormElement);
-    const signupCredential = Object.fromEntries(formData); // Simplified from Array.from(formData.entries())
+    const signupCredential = Object.fromEntries(formData);
 
     const res = await api.post(endpoints.register, signupCredential);
 
